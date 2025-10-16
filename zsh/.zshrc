@@ -228,6 +228,7 @@ ls() {
 ## Completion scripts setup. Remove the following line to uninstall
 [[ -f /home/arcane/.dart-cli-completion/zsh-config.zsh ]] && . /home/arcane/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
-
-
 . "$HOME/.cargo/env"
+
+# for custom Help command
+source /home/arcane/scripts/helper.sh
