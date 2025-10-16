@@ -58,6 +58,7 @@
     //"format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}"
     "format": " {:%H:%M | %a %b %d}",
     "tooltip-format": "<tt>{calendar}</tt>", // Detailed tooltip for full date
+    "on-click" : "kitty -e calcurse",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
@@ -141,7 +142,7 @@
   // --- Network ------------------------------------------------------------
   "network": {
     "interval": 5, // Check network status every 5 seconds
-    "format-wifi": " {essid}({signalStrength}%)", // Show SSID and signal strength
+    "format-wifi": "  {essid}({signalStrength}%)", // Show SSID and signal strength
     "format-ethernet": "󰈀  {ifname}",
     "format-disconnected": "󰖪  No Network", // More descriptive message
     "tooltip": true,

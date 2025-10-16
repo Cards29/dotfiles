@@ -43,7 +43,7 @@ window#waybar {
   margin: 10;
   border: 2px solid @blue; /* 2px width, solid style, using your @lavender color */
   font-family: "FiraCode Nerd Font", monospace;
-  font-size: 14px;
+  font-size: 15px;
  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);*/
 }
 
@@ -92,7 +92,7 @@ window#waybar {
   padding: 0px 10px;
   border: none;
   min-width: 0; /* Allow buttons to be smaller */
-  font-size: 14px; /* Larger icons for workspaces */
+  font-size: 15px; /* Larger icons for workspaces */
   transition: all 0.2s ease-in-out; /* Smooth transitions */
 }
 
@@ -115,7 +115,7 @@ window#waybar {
 #clock {
   color: @lavender;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   margin-left: 8px;
   margin-right: 8px;
 }

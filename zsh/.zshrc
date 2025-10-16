@@ -85,6 +85,8 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export PATH="/home/arcane/.local/share/JetBrains/Toolbox/scripts:$PATH"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -110,9 +112,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# --------eza--------
-alias ls="eza -1 -l --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias cd="z"
+alias asdf="nvim ~/Desktop/workspace/Competitive\ Programming/forProblemSolving.cpp"
+alias cses="nvim ~/Desktop/workspace/Competitive\ Programming/CP_CPP/CSES/"
+
+# Custom Help command
+h() {
+    CYAN="\033[1;36m"
+    GREEN="\033[1;32m"
+    RESET="\033[0m"
+
+    echo -e "${CYAN}=== Help Menu ===${RESET}"
+    echo -e "${GREEN}1)${RESET} Termninal keybindings"
+    echo -e "${GREEN}2)${RESET} Tmux keybindings"
+    echo -e "${GREEN}3)${RESET} Exit"
+    echo
+    read -p "Choose an option: " choice
+
+    case $choice in
+        1) ~/scripts/cl-shortcuts.sh ;;
+        2) ~/scripts/tmux_cheatsheet.sh ;;
+        3) echo "Goodbye!" ;;
+        *) echo "Invalid choice." ;;
+    esac
+}
 
 
 # This is for yazi
@@ -150,8 +173,9 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+  fd  --type f --hidden --no-ignore --exclude .git . "$1"
 }
+
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
@@ -186,3 +210,25 @@ eval $(thefuck --alias fk)
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
+
+# This for using eza and tree with ls
+unalias ls
+ls() {
+  if [[ "$1" == "-T" || "$1" == "--tree" ]]; then
+    shift
+    tree -C "$@"
+  else
+    command eza -l --git --color=always --icons=always \
+      --no-filesize --no-time --no-user --no-permissions "$@"
+  fi
+}
+
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/arcane/.dart-cli-completion/zsh-config.zsh ]] && . /home/arcane/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+. "$HOME/.cargo/env"
+
+# for custom Help command
+source /home/arcane/scripts/helper.sh
