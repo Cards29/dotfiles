@@ -92,7 +92,7 @@ return {
 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 		})
 		-- Emmet configuration
-		vim.lsp.config("emmet_ls", {
+		vim.lsp.config("emmet_language_server", {
 			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 		})
 		-- Lua configuration
