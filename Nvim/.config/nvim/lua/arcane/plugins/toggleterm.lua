@@ -16,14 +16,14 @@ return {
 			insert_mappings = true, -- Apply mappings in insert mode
 			terminal_mappings = true, -- Apply mappings in terminal mode
 			persist_size = true, -- Persist the size of the terminal
-			direction = "horizontal", -- Options: "horizontal", "vertical", "float", "tab"
+			direction = "float", -- Options: "horizontal", "vertical", "float", "tab"
 			close_on_exit = true, -- Close terminal when process exits
 			shell = vim.o.shell, -- Use the default shell
 			float_opts = {
 				-- Settings for floating terminal
 				border = "curved", -- Border style: "single", "double", "shadow", "curved"
-				width = 80,
-				height = 20,
+				width = 100,
+				height = 25,
 				winblend = 0,
 			},
 		},
@@ -32,12 +32,6 @@ return {
 
 			-- Optional: Custom keymaps or additional setup
 			vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
-			vim.keymap.set(
-				"n",
-				"<leader>tf",
-				"<cmd>ToggleTerm direction=float<CR>",
-				{ desc = "Toggle floating terminal" }
-			)
 			vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 		end,
 	},
