@@ -56,7 +56,7 @@ play = [
 	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
-# custom Zathura opener for presentation
+# custom opener for presentation
 presentation = [
   { run = 'evince -s "$@"', desc = "Presentation Mode", block = true, for = "unix" },
 ]
