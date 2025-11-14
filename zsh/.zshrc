@@ -230,5 +230,3 @@ ls() {
 ## [/Completion]
 . "$HOME/.cargo/env"
 
-# for custom Help command
-source /home/arcane/scripts/helper.sh
