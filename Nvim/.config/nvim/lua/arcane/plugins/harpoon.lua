@@ -72,6 +72,42 @@ return {
 				desc = "Harpoon: Go to file 5",
 			},
 			{
+				"<leader>6",
+				function()
+					require("harpoon"):list():select(6)
+				end,
+				desc = "Harpoon: Go to file 5",
+			},
+			{
+				"<leader>7",
+				function()
+					require("harpoon"):list():select(7)
+				end,
+				desc = "Harpoon: Go to file 5",
+			},
+			{
+				"<leader>8",
+				function()
+					require("harpoon"):list():select(8)
+				end,
+				desc = "Harpoon: Go to file 5",
+			},
+			{
+				"<leader>9",
+				function()
+					require("harpoon"):list():select(9)
+				end,
+				desc = "Harpoon: Go to file 5",
+			},
+			{
+				"<leader>0",
+				function()
+					require("harpoon"):list():select(10)
+				end,
+				desc = "Harpoon: Go to file 5",
+			},
+
+			{
 				"<leader>h[",
 				function()
 					require("harpoon"):list():prev()
