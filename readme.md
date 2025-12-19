@@ -1,76 +1,115 @@
-## My Hyprland Dotfiles Collection
+# An AI written readme, sorry I'm lazy
 
-This repo contains all my configurations for a Hyprland-based setup in Arch Linux.
+My personal configuration files for a Wayland-based development environment, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
+## Overview
 
-## 🛠️ Prerequisites
+This repository contains configurations for: 
 
-Before you dive in, make sure you have the following packages installed on your Arch Linux system:
+- **hypr** - Hyprland (Wayland compositor)
+- **kitty** - Terminal emulator
+- **nvim** - Neovim text editor
+- **scripts** - Utility scripts
+- **tmux** - Terminal multiplexer
+- **waybar** - Wayland status bar
+- **yazi** - Terminal file manager
+- **zsh** - Z shell
 
-```bash
-sudo pacman -S \
-  hyprland \
-  waybar \
-  kitty \
-  rofi \
-  swww \
-  swayosd
-```
+## Prerequisites
 
-Also, make a directory named `~/Pictures/wallpapers` and add some wallpapers in there for the swww script to work.
+- [GNU Stow](https://www.gnu.org/software/stow/)
+- The applications you want to configure (Hyprland, Neovim, Kitty, etc.)
 
-```bash
-mkdir -p ~/Pictures/wallpapers
-```
+### Installing Stow
 
-
-## 📦 Using GNU Stow
-
-The repo is structured for your dotfiles to be managed with [GNU Stow](https://www.gnu.org/software/stow/). If you don't know what GNU Stow is, it's basically an easy way to symlink your configs into `~/.config/` effortlessly.
-
-
-To download GNU Stow:
+**Arch Linux:**
 ```bash
 sudo pacman -S stow
 ```
 
-
-## 📥 Cloning the Repo
-
-It is **very important** to clone this repository directly into your **home directory** to ensure all the stow commands given below work correctly.
-
+**Debian/Ubuntu:**
 ```bash
-cd ~
-git clone https://github.com/Cards29/hyprland-arch-Cards29.git
-cd "hyprland-arch-Cards29"
+sudo apt install stow
 ```
 
+**macOS:**
+```bash
+brew install stow
+```
 
+## Installation
 
-## 🚀 Stow Commands
+1. Clone this repository to your home directory:  
+```bash
+git clone https://github.com/Cards29/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+```
 
-Once you’ve cloned this repo, cd into it and run Stow for the components you want:
+2. Use Stow to symlink the configurations you want: 
 
 ```bash
-stow hyprland
+stow btop hypr kitty nvim tmux waybar yazi zsh
+```
+
+## Usage
+
+### Installing a Package
+
+To install a specific configuration: 
+```bash
+cd ~/dotfiles
+stow <package-name>
+```
+
+For example:
+```bash
 stow waybar
-stow kitty
 ```
 
-For **Rofi**, please follow the  [adi1090x/rofi](https://github.com/adi1090x/rofi) repository.
+This creates symlinks from `~/dotfiles/waybar/` to your `~/.config/` directory.
 
+### Removing a Package
 
-## 🌄 Changing Wallpapers with Swww
-
-Use the `swww_random_wallpaper.sh` script in the **Scripts/** folder. Add it to your Hyprland key bindings to cycle wallpapers on the fly:
-
-```ini
-# Example in your Hyprland keybinds (e.g., hyprland.conf)
-bind = SUPER, w, exec, $HOME/hyprland-arch-Cards29/Scripts/swww_random_wallpaper.sh
+To uninstall a configuration:
+```bash
+cd ~/dotfiles
+stow -D <package-name>
 ```
 
-Now you can hit **Super + W** to refresh your background instantly.
+### Reinstalling a Package
 
----
+To reinstall (useful after making changes):
+```bash
+cd ~/dotfiles
+stow -R <package-name>
+```
 
-Thanks for visiting!
+## Structure
+
+Each directory is a Stow package containing the configuration files in their expected directory structure.  For example: 
+
+```
+nvim/
+└── . config/
+    └── nvim/
+        ├── init. lua
+        └── ... 
+
+kitty/
+└── .config/
+    └── kitty/
+        └── kitty.conf
+```
+
+When you run `stow nvim`, it creates symlinks from `~/dotfiles/nvim/. config/nvim/` to `~/.config/nvim/`.
+
+## Notes
+
+- Make sure to backup your existing configurations before stowing
+- The repository uses the standard `.config/` structure for most packages
+- Stow must be run from the `~/dotfiles` directory
+- Each package can be managed independently
+
+## License
+
+MIT
