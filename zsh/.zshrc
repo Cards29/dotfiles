@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,27 +116,11 @@ alias cd="z"
 alias asdf="nvim ~/Desktop/workspace/Competitive\ Programming/forProblemSolving.cpp"
 alias cses="nvim ~/Desktop/workspace/Competitive\ Programming/CP_CPP/CSES/"
 
-# Custom Help command
-h() {
-    CYAN="\033[1;36m"
-    GREEN="\033[1;32m"
-    RESET="\033[0m"
+# This is for oh my posh
+eval "$(oh-my-posh init zsh --config "/usr/share/oh-my-posh/themes/tokyonight_storm.omp.json")"
 
-    echo -e "${CYAN}=== Help Menu ===${RESET}"
-    echo -e "${GREEN}1)${RESET} Termninal keybindings"
-    echo -e "${GREEN}2)${RESET} Tmux keybindings"
-    echo -e "${GREEN}3)${RESET} Exit"
-    echo
-    read -p "Choose an option: " choice
-
-    case $choice in
-        1) ~/scripts/cl-shortcuts.sh ;;
-        2) ~/scripts/tmux_cheatsheet.sh ;;
-        3) echo "Goodbye!" ;;
-        *) echo "Invalid choice." ;;
-    esac
-}
-
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # This is for yazi
 export EDITOR="nvim"
@@ -149,11 +133,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# This is for oh my posh
-# eval "$(oh-my-posh init zsh --config "/usr/share/oh-my-posh/themes/clean-detailed.omp.json")"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 
