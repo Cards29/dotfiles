@@ -7,9 +7,9 @@
   "exclusive": true,
   "gtk-layer-shell": true,
   // Margin to place the bar slightly away from screen edges
-  "margin-top": 4,
-  "margin-left": 4,
-  "margin-right": 4,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "spacing": 0, // No extra spacing between modules themselves in the config, CSS handles it
 
   // --- Modules Layout -----------------------------------------------------
