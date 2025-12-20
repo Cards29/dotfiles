@@ -146,7 +146,7 @@ window#waybar {
 
 #tray {
   /* Ensure the border is explicitly defined */
-  border: 1px solid @magenta;
+  border: 1px solid @cyan;
 
   /* Add a tiny bit of extra padding to prevent icons from touching the border */
   padding: 0px 8px;
