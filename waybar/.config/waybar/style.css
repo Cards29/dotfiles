@@ -1,196 +1,176 @@
-/*@import url("colors.css");*/
-
-/* --- Waybar Style for Arch Hyprland (Catppuccin-inspired Palette) --- */
-
-/* Catppuccin's Core 4 Colors */
-@define-color rosewater  #f5e0dc;
-@define-color flamingo   #f2c5c9;
-@define-color pink       #f5c2e7;
-@define-color mauve      #cba6f7;
-@define-color red        #f38ba8;
-@define-color maroon     #eba0ac;
-@define-color peach      #fab387;
-@define-color yellow     #f9e2af;
-@define-color green      #a6e3a1;
-@define-color teal       #94e2d5;
-@define-color sky        #89dceb;
-@define-color sapphire   #74c7ec;
-@define-color blue       #89b4fa;
-@define-color lavender   #babbf1;
-
-/* Catppuccin's Grayscale Colors (High-Contrast to Low-Contrast) */
-@define-color text       #cdd6f4;
-@define-color subtext1   #bac2de;
-@define-color subtext0   #a6adc8;
-@define-color overlay2   #9399b2;
-@define-color overlay1   #7f849c;
-@define-color overlay0   #6c7086;
-@define-color surface2   #585b70;
-@define-color surface1   #45475a;
-@define-color surface0   #313244;
-
-/* Catppuccin's Background Colors (Lightest to Darkest) */
-@define-color base       #1e1e2e;
-@define-color mantle     #181825;
-@define-color crust      #11111b;
+@define-color bg_dark      #1a1b26;
+@define-color bg_highlight #292e42;
+@define-color blue         #7aa2f7;
+@define-color cyan         #7dcfff;
+@define-color green        #9ece6a;
+@define-color magenta      #bb9af7;
+@define-color orange       #ff9e64;
+@define-color red          #f7768e;
+@define-color yellow       #e0af68;
+@define-color fg           #c0caf5;
 
 /* ---------- Bar Window Styling ---------- */
 window#waybar {
-  background-color: @base;
-  color: @text;
-  border-radius: 0px;
-  padding: 0px 0px;
-  margin: 10;
-  border: 2px solid @blue; /* 2px width, solid style, using your @lavender color */
+  background-color: rgba(26, 27, 38, 0.8);
+  color: @fg;
+  border: 1px solid @blue; /* Made the main bar border thinner */
   font-family: "FiraCode Nerd Font", monospace;
-  font-size: 15px;
- /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);*/
+  font-size: 16px;
 }
 
-/* ---------- Module Layout (Flexbox) ---------- */
-.modules-left,
-.modules-center,
-.modules-right {
-  margin: 0 0px; 
-  padding: 0 8px;
-}
-
-/* Add proper spacing and consistent padding for individual modules */
-/* Grouping similar modules for consistent styling */
+/* ---------- Shared Module Styling (The "Pill" Look) ---------- */
 #workspaces,
 #clock,
 #battery,
 #pulseaudio,
-#pulseaudio#microphone,
 #network,
 #backlight,
+#memory,
+#bluetooth,
 #tray,
-#hyprland-window,
-#bluetooth {
-  background-color: transparent; /* A common background for most modules */
-  padding: 0px 7px; /* Consistent padding for all modules */
-  margin: 0 0px; /* Spacing between modules */
+#window,
+#custom-niri-windows {
+  background-color: rgba(41, 46, 66, 0.5);
+  padding: 0px 8px;
+  margin: 3px 4px;
+  border-radius: 8px;
+  border: 1px solid @bg_highlight;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-/* Specific adjustments for modules at the ends */
-.modules-left #workspaces {
-}
-.modules-right #tray {
+/* ---------- Individual Border & Text Colors ---------- */
+
+#custom-os_button {
+  font-size: 18px;
+  color: #1793d1; /* Arch Linux Blue */
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
-/* ---------- Workspaces ---------- */
 #workspaces {
-  padding: 0px 0px; /* Less horizontal padding for workspace buttons */
-  background-color: transparent; /* Make the background transparent for the buttons to show */
-  border-radius: 0;
-  margin-left: 0px; /* Adjust to align with bar margin */
-}
-
-#workspaces button {
-  background-color: transparent;
-  color: @subtext1;
-  padding: 0px 10px;
-  border: none;
-  min-width: 0; /* Allow buttons to be smaller */
-  font-size: 15px; /* Larger icons for workspaces */
-  transition: all 0.2s ease-in-out; /* Smooth transitions */
+  border-color: @magenta;
+  padding: 0px 0px;
 }
 
 #workspaces button.active {
-  background-color: transparent; /* Active workspace background */
-  color: @blue; /* Active workspace color */
-}
-
-#workspaces button:hover {
-  background-color: transparent;
-  color: @blue; /* Highlight on hover */
-}
-
-#workspaces button.urgent {
-  color: @red; /* Urgent workspace color */
-  background-color: transparent;
-}
-
-/* ---------- Clock ---------- */
-#clock {
-  color: @lavender;
+  color: @magenta;
   font-weight: bold;
-  font-size: 15px;
-  margin-left: 8px;
-  margin-right: 8px;
 }
 
-/* ---------- Hyprland Window Title ---------- */
-#hyprland-window {
-  color: @text;
-  font-weight: normal;
-  font-style: italic;
-  /* Module container styling, no text-related width/overflow properties here */
+#clock {
+  color: @cyan;
+  border-color: @cyan;
 }
 
-/* ---------- Individual Module Colors & States ---------- */
+#window,
+#custom-niri-windows {
+  color: @fg;
+  border-color: @blue; /* Changed from bg_highlight to blue for visibility */
+}
 
 #battery {
   color: @green;
+  border-color: @green;
 }
 
 #battery.warning {
-  color: @yellow;
+  color: @orange;
+  border-color: @orange;
 }
 
 #battery.critical {
   color: @red;
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  border-color: @red;
 }
 
-#battery.charging {
+#pulseaudio {
   color: @blue;
-  font-weight: 600;
+  border-color: @blue;
 }
 
-#pulseaudio,
-#pulseaudio#microphone {
-  color: @sky;
-}
-
-#pulseaudio.muted,
-#pulseaudio#microphone.source-muted {
-  color: @pink;
-  font-weight: normal;
-}
-
-#network {
-  color: @teal;
-}
-
-#network.disconnected {
+#pulseaudio.muted {
   color: @red;
+  border-color: @red;
 }
 
 #backlight {
   color: @yellow;
+  border-color: @yellow;
 }
 
-#bluetooth { /* <--- ADD THIS BLOCK */
-    color: @sapphire;
+#memory {
+  color: @green;
+  border-color: @green;
+}
+
+#memory.warning {
+  color: @orange;
+  border-color: @orange;
+}
+
+#memory.critical {
+  color: @red;
+  border-color: @red;
+}
+
+#network {
+  color: @cyan;
+  border-color: @cyan;
+}
+
+#network.disconnected {
+  color: @red;
+  border-color: @red;
+}
+
+#bluetooth {
+  color: @blue;
+  border-color: @blue;
+}
+
+#bluetooth.off {
+  color: @bg_highlight;
+  border-color: @bg_highlight;
+}
+
+#bluetooth.disabled {
+  color: @red;
+  border-color: @red;
+}
+
+#bluetooth.on {
+  color: @blue;
+  border-color: @blue;
 }
 
 #tray {
-  color: @text;
-  padding-right: 12px; /* Adjust for end of bar */
+  /* Ensure the border is explicitly defined */
+  border: 1px solid @magenta;
+
+  /* Add a tiny bit of extra padding to prevent icons from touching the border */
+  padding: 0px 8px;
+
+  /* Reset background to ensure transparency doesn't hide the border */
+  background-color: rgba(41, 46, 66, 0.5);
 }
 
-#tray > .system-tray-icon {
-    -gtk-icon-effect: none; /* Disable default GTK icon effects */
+/* Sometimes the internal tray widget needs to be told not to have its own border */
+#tray > widget {
+  border: none;
 }
 
-/* ---------- Animations ---------- */
-@keyframes blink {
-  to {
-    background-color: @red;
-    color: black;
-  }
+/* ---------- Hover Effects ---------- */
+#clock:hover,
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#backlight:hover,
+#memory:hover,
+#bluetooth:hover,
+#tray:hover {
+  background-color: rgba(192, 202, 245, 0.2);
+  border-color: @fg;
+  border-radius: 4px;
+  border-width: 1px;
 }
