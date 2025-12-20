@@ -589,7 +589,7 @@ binds {
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
-    Mod+Shift+W { spawn "sh" "-c" "pkill waybar && waybar &"; }
+    Ctrl+Mod+W { spawn "sh" "-c" "pgrep -x waybar && pkill waybar || waybar &"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
