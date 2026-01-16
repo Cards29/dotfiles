@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,7 +117,7 @@ alias asdf="nvim ~/Desktop/workspace/Competitive\ Programming/forProblemSolving.
 alias cses="nvim ~/Desktop/workspace/Competitive\ Programming/CP_CPP/CSES/"
 
 # This is for oh my posh
-eval "$(oh-my-posh init zsh --config "/usr/share/oh-my-posh/themes/tokyonight_storm.omp.json")"
+# eval "$(oh-my-posh init zsh --config "/usr/share/oh-my-posh/themes/tokyonight_storm.omp.json")"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -209,3 +209,16 @@ ls() {
 ## [/Completion]
 . "$HOME/.cargo/env"
 
+# Force block cursor in zsh
+function zle-line-init {
+  printf '\e[1 q'
+}
+zle -N zle-line-init
+
+function zle-keymap-select {
+  printf '\e[1 q'
+}
+zle -N zle-keymap-select
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
