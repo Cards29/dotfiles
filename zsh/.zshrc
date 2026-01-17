@@ -220,5 +220,9 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
+# default postgres
+export PGUSER='postgres'
+export PGDATABASE='postgres'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
