@@ -1,6 +1,6 @@
 (defsrc
   caps
-  ;; a s d f j k l ;
+  a s d f j k l ;
 )
 
 (defalias
@@ -8,19 +8,19 @@
   escctrl (tap-hold 100 100 esc lctl)
   
   ;; Left hand: a=Ctrl, s=Shift, d=Alt, f=Super
-  ;; a_mod (tap-hold 200 200 a lctl)
-  ;; s_mod (tap-hold 200 200 s lsft)
-  ;; d_mod (tap-hold 200 200 d lalt)
-  ;; f_mod (tap-hold 200 200 f lmet)
+  a_mod (tap-hold 200 200 a lmet)
+  s_mod (tap-hold 200 200 s lalt)
+  d_mod (tap-hold 200 200 d lsft)
+  f_mod (tap-hold 200 200 f lctl)
 
   ;; Right hand: j=Super, k=Alt, l=Shift, ;=Ctrl
-  ;; j_mod (tap-hold 200 200 j rmet)
-  ;; k_mod (tap-hold 200 200 k ralt)
-  ;; l_mod (tap-hold 200 200 l rsft)
-  ;; semi_mod (tap-hold 200 200 ; rctl)
+  j_mod (tap-hold 200 200 j rmet)
+  k_mod (tap-hold 200 200 k ralt)
+  l_mod (tap-hold 200 200 l rsft)
+  semi_mod (tap-hold 200 200 ; rctl)
 )
 
 (deflayer default
   @escctrl
-  ;; @a_mod @s_mod @d_mod @f_mod @j_mod @k_mod @l_mod @semi_mod
+  @a_mod @s_mod @d_mod @f_mod @j_mod @k_mod @l_mod @semi_mod
 )
