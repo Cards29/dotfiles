@@ -1,0 +1,19 @@
+(defsrc
+  caps a s d f g h j k l ;   spc
+)
+
+(defalias
+  ;; Tap Caps for Esc, Hold for Ctrl
+  escctrl (tap-hold 100 100 esc lctl)
+  
+  ;; Tap Space for Space, Hold to switch to "num" layer
+  spcnum (tap-hold 200 200 spc (layer-toggle numbers))
+)
+
+(deflayer default
+  @escctrl a s d f g h j k l ;   @spcnum
+)
+
+(deflayer numbers
+  _    1 2 3 4 5 6 7 8 9 0   _
+)
