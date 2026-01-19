@@ -82,6 +82,7 @@ export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
 export EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 
 
