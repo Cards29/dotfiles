@@ -65,6 +65,10 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 # Aliases
 alias ls="$EZA_COMMAND"
 alias grep='rg'
+alias UPDATE="bash ~/dotfiles/scripts/update.sh"
+alias BACKUP-PKG="bash ~/dotfiles/scripts/backup-packages.sh"
+
+# Suffix alias
 alias -s json=jless
 alias -s md=bat
 alias -s go='$EDITOR'
@@ -77,12 +81,17 @@ alias -s py='$EDITOR'
 alias -s js='$EDITOR'
 alias -s ts='$EDITOR'
 
+
 # My Exports
 export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
 export EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
+
+
+# Path exports
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 
 
@@ -93,7 +102,7 @@ eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
 
-# ----------------------------------------------------
+# -------------------fzf------------------------------
 # -- Use fd instead of find in fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -110,6 +119,26 @@ _fzf_compgen_path() {
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
+}
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
 }
 
 # ----- Bat (better cat) -----
