@@ -66,7 +66,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 alias ls="$EZA_COMMAND"
 alias grep='rg'
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
-alias BACKUP-PKG="bash ~/dotfiles/scripts/backup-packages.sh"
+alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
+alias RELOAD_KANATA="systemctl --user daemon-reload && systemctl --user restart kanata.service"
 
 # Suffix alias
 alias -s json=jless
@@ -92,6 +93,7 @@ export EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize
 # Path exports
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH=/home/arcane/.opencode/bin:$PATH
 
 
 
