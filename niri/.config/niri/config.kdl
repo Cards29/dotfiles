@@ -275,7 +275,7 @@ spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "before-sleep" "sway
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 cursor {
-    xcursor-theme "banana"
+    xcursor-theme "Banana"
     xcursor-size 48
 
     hide-when-typing
