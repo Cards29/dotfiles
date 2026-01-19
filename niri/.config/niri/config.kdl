@@ -274,6 +274,14 @@ spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "before-sleep" "sway
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
+cursor {
+    xcursor-theme "banana"
+    xcursor-size 48
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
@@ -378,6 +386,8 @@ binds {
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+
+    Mod+N { spawn-sh "makoctl dismiss -a"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
