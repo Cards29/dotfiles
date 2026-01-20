@@ -5,19 +5,17 @@
 
 (defalias
   ;; Tap Caps for Esc, Hold for Ctrl
-  escctrl (tap-hold 100 100 esc lctl)
+  escctrl (tap-hold 100 100 esc esc)
   
-  ;; Left hand: a=Ctrl, s=Shift, d=Alt, f=Super
   a_mod (tap-hold 200 200 a lmet)
   s_mod (tap-hold 200 200 s lalt)
   d_mod (tap-hold 200 200 d lsft)
   f_mod (tap-hold 200 200 f lctl)
 
-  ;; Right hand: j=Super, k=Alt, l=Shift, ;=Ctrl
-  j_mod (tap-hold 200 200 j rmet)
-  k_mod (tap-hold 200 200 k ralt)
-  l_mod (tap-hold 200 200 l rsft)
-  semi_mod (tap-hold 200 200 ; rctl)
+  j_mod (tap-hold 200 200 j rctl)
+  k_mod (tap-hold 200 200 k rsft)
+  l_mod (tap-hold 200 200 l ralt)
+  semi_mod (tap-hold 200 200 ; rmet)
 )
 
 (deflayer default
