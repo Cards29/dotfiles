@@ -1,5 +1,5 @@
 (defsrc 
-  caps a s d f j k l ;
+  a s d f j k l ;
 )
 
 (defvar 
@@ -8,8 +8,6 @@
 
 
 (defalias 
-  ;; Tap Caps for Esc, Hold for Ctrl 
-  escctrl (tap-hold $tap-time $hold-time esc esc) 
   a_mod (tap-hold $tap-time $hold-time a lmet) 
   s_mod (tap-hold $tap-time $hold-time s lalt)
   d_mod (tap-hold $tap-time $hold-time d lsft) 
@@ -21,5 +19,5 @@
 )
 
 (deflayer default
-  @escctrl @a_mod @s_mod @d_mod @f_mod @j_mod @k_mod @l_mod @semi_mod 
+  @a_mod @s_mod @d_mod @f_mod @j_mod @k_mod @l_mod @semi_mod 
 )
