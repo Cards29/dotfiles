@@ -33,7 +33,7 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey ' ' magic-space
-bindkey -s '^xgc' 'git commit -m ""\C-b'
+bindkey -s '^xgm' 'git commit -m ""\C-b'
 bindkey -s '^xgs' 'git status'
 bindkey -s '^xga' 'git add'
 
