@@ -67,7 +67,7 @@ alias ls="$EZA_COMMAND"
 alias grep='rg'
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
 alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
-alias RELOAD_KANATA="systemctl --user daemon-reload && systemctl --user restart kanata.service"
+alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
 
 # Suffix alias
 alias -s json=jless
