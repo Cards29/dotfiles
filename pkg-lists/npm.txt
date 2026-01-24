@@ -1,0 +1,5 @@
+lib
+gemini-cli
+eslint
+pnpm
+prettier

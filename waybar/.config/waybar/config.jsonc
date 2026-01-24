@@ -3,7 +3,7 @@
   // --- Bar placement & behavior ---
   "layer": "top",
   "position": "top",
-  "height": 32, // Standard height for a clean look
+  "height": 24,
   "exclusive": true,
   "gtk-layer-shell": true,
   // Margin to place the bar slightly away from screen edges
@@ -13,16 +13,17 @@
   "spacing": 0, // No extra spacing between modules themselves in the config, CSS handles it
 
   // --- Modules Layout -----------------------------------------------------
-  "modules-left":   ["hyprland/workspaces", "hyprland/window"], // Workspaces on the left, followed by the active window
+  "modules-left":   ["custom/os_button", "niri/workspaces", "custom/niri-windows","niri/window"], // Workspaces on the left, followed by the active window
   "modules-center": ["clock"], // Clock prominently in the center
   "modules-right":  [
     //"pulseaudio#microphone", // Microphone before master volume
+    "battery",
     "pulseaudio",
     "backlight",
-    "network",
-    "bluetooth",
-    "battery"
-    //"tray" // Tray usually goes last on the right
+    "memory",
+    // "network",
+    // "bluetooth",
+    "tray" // Tray usually goes last on the right
   ],
 
   // --- Hyprland Workspaces ------------------------------------------------
@@ -45,17 +46,72 @@
     }
   },
 
+  // OS
+  "custom/os_button": {
+    "format": " ", // This is the Arch icon from Nerd Fonts
+    "tooltip": true,
+    "tooltip-format": "I use arch btw"
+  },
+
   // --- Hyprland Window Title ----------------------------------------------
   "hyprland/window": {
-    "format": " 󰣇  {}", // Icon followed by the window title
+    "format": "{}", // Icon followed by the window title
     "max-length": 50, // Prevent extremely long titles from pushing other modules off-screen
     "tooltip": true
+  },
+
+  // Niri stuff
+  "custom/niri-windows": {
+    "exec": "~/.config/waybar/niri-status.sh",
+    "return-type": "json",
+    "interval": 1,
+    "format": "[{}]",  
+    "on-scroll-up": "niri msg action focus-workspace-up",
+    "on-scroll-down": "niri msg action focus-workspace-down",
+    "tooltip": true
+  },
+
+  "niri/workspaces": {
+    "format": "󰘔 {index}",
+    "all-outputs": false,
+    "current-only": true,
+    "persistent-workspaces": {} 
+  },
+
+  "niri/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "icon": true, 
+    "rewrite": {
+      // --- Requested Apps ---
+      "(.*) — Mozilla Firefox": "Firefox",
+      "(.*) - kitty": "Kitty",
+      "alacritty": "Alacritty",
+      "(.*) - Visual Studio Code": "VS Code",
+      "(.*) - Discord": "Discord",
+      "(.*) - Brave": "Brave",
+      "Telegram (.*)": "Telegram",
+      "Lutris": "Lutris",
+      "Files": "Nautilus",        // Added Nautilus
+      "(.*) - Files": "Nautilus", // Matches folder names in Nautilus
+
+      // --- Community Popular ---
+      "(.*) - Obsidian v(.*)": "Obsidian",
+      "Spotify( Premium)?": "Spotify",
+      "Steam": "Steam",
+      "vlc": "VLC",
+      "(.*) - Thunar": "Thunar",
+      "nwg-look": "Appearance",
+      "(.+) - mpv": "mpv",
+      "GNU Emacs(.*)": "Emacs",
+      
+      "^$": "Desktop" 
+    }
   },
 
   // --- Clock --------------------------------------------------------------
   "clock": {
     "interval": 1,
-    //"format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}"
     "format": " {:%H:%M | %a %b %d}",
     "tooltip-format": "<tt>{calendar}</tt>", // Detailed tooltip for full date
     "on-click" : "kitty -e calcurse",
@@ -148,6 +204,16 @@
     "tooltip": true,
     "tooltip-format": "IP: {ipaddr}\n {bandwidthDownBytes}  {bandwidthUpBytes}", // Detailed tooltip
     "on-click": "kitty -e nmtui" // Open network manager for easy configuration
+  },
+
+  "memory": {
+    "states": {
+        "warning": 70,
+        "critical": 90
+    },
+    "interval": 30,
+    "format": " {percentage}%",
+    "format-alt": " {used:0.1f}GiB"
   },
 
 

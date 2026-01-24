@@ -1,0 +1,4 @@
+# add the following anywhere in ~/.p10k.zsh 
+# Disable vcs segment if TMUX is present
+[[ -n "$TMUX" ]] && typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=none
+[[ -n "$TMUX" ]] && typeset -g POWERLEVEL9K_VCS_DISABLED_DIR_PATTERN='*'

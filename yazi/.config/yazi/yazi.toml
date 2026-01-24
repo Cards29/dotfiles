@@ -62,7 +62,7 @@ presentation = [
 ]
 
 [open]
-rules = [
+prepened_rules = [
 	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
@@ -91,11 +91,11 @@ image_bound      = [ 5000, 5000 ]
 suppress_preload = false
 
 [plugin]
-fetchers = [
+prepend_fetchers = [
 	# Mimetype
 	{ id = "mime", name = "*", run = "mime", prio = "high" },
 ]
-spotters = [
+prepend_spotters = [
 	{ name = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*", run = "code" },
@@ -109,7 +109,7 @@ spotters = [
 	# Fallback
 	{ name = "*", run = "file" },
 ]
-preloaders = [
+prepend_preloaders = [
 	# Image
 	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
 	{ mime = "image/svg+xml", run = "svg" },
@@ -122,7 +122,7 @@ preloaders = [
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
 ]
-previewers = [
+prepend_previewers = [
 	{ name = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*", run = "code" },
