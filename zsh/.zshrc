@@ -26,7 +26,7 @@ autoload -U compinit && compinit
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.toml)"
 
 # Variables
-EZA=''
+EZA=export EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
 
 # Keybindings
 bindkey -e
@@ -88,7 +88,6 @@ alias -s ts='$EDITOR'
 export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
-export EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
 
 
 # Path exports
