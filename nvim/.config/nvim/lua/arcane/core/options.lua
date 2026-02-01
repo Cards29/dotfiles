@@ -10,7 +10,6 @@ opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-
 opt.wrap = false
 
 -- search settings
@@ -42,3 +41,35 @@ opt.swapfile = false
 
 -- Fix for vim-tmux-navigator / netrw <C-l> conflict
 vim.g.tmux_navigator_disable_netrw_workaround = 1
+
+local group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = group,
+	desc = "Highlight yanked text",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "YankHighlight",
+			timeout = 200,
+		})
+	end,
+})
+
+vim.api.nvim_set_hl(0, "YankHighlight", {
+	bg = "#9a5a3a",
+	fg = "#d8d8e6",
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
+	callback = function()
+		local directory = vim.fn.expand("%:p:h")
+		if not directory:match("^%w+:") and vim.fn.isdirectory(directory) == 0 then
+			vim.fn.mkdir(directory, "p")
+		end
+	end,
+})
+
+opt.conceallevel = 0
+opt.showtabline = 0
+opt.statusline = "%f %r %m%="
+opt.winborder = "rounded"

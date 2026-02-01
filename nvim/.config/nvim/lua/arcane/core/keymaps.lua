@@ -20,12 +20,6 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-
 -- copy line up or down
 keymap.set("n", "<A-S-Up>", "yyP", { desc = "Yank line Up (copy)" })
 keymap.set("n", "<A-S-Down>", "yyp", { desc = "Yank line Down (copy)" })
@@ -60,7 +54,7 @@ keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 vim.keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" }) -- like ^
 vim.keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" }) -- like $
 
--- Bonus: many people also remap M to the middle of the line (very handy)
+-- many people also remap M to the middle of the line (very handy)
 vim.keymap.set({ "n", "v", "o" }, "M", "gM", { desc = "Go to middle of line" })
--- or more precisely to the middle:
--- vim.keymap.set({"n", "v", "o"}, "M", ":normal! gm<CR>")
+
+vim.api.nvim_create_user_command("W", "w !sudo tee % > /dev/null", {})

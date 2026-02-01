@@ -51,19 +51,28 @@ return {
 						-- If inside a snippet/Emmet expansion, jump to the next placeholder
 						luasnip.expand_or_jump()
 					else
-						-- Otherwise, use the default <Tab> behavior (insert a tab character)
-						fallback()
+						-- Call tabout directly (most reliable way)
+						local ok, tabout = pcall(require, "tabout")
+						if ok then
+							tabout.tabout()
+						else
+							fallback() -- normal tab / indent
+						end
 					end
 				end, { "i", "s" }), -- Apply in Insert ('i') and Snippet ('s') modes
 
-				-- NEW: Shift+Tab for reverse navigation and jumping backward
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
 					elseif luasnip.jumpable(-1) then
 						luasnip.jump(-1)
 					else
-						fallback()
+						local ok, tabout = pcall(require, "tabout")
+						if ok then
+							tabout.backwards_tabout()
+						else
+							fallback()
+						end
 					end
 				end, { "i", "s" }),
 			}),
