@@ -4,12 +4,6 @@ local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-
-keymap.set("n", "<A-S-j>", "yyP", { desc = "Duplicate line upward" })
-keymap.set("n", "<A-S-k>", "yyp", { desc = "Duplicate line downward" })
-
 keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
@@ -30,11 +24,6 @@ keymap.set(
 
 keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
-
-keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yanking replaced text" })
-
-keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
-keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable Up arrow" })
 keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable Down arrow" })
