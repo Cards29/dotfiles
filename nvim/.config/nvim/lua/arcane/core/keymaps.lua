@@ -7,6 +7,9 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
+keymap.set("n", "<A-l>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<A-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
