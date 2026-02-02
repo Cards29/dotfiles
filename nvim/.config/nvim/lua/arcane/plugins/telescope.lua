@@ -34,8 +34,9 @@ return {
 				find_command = { "fd", "--type", "f", "--no-ignore", "--hidden", "--strip-cwd-prefix" },
 			})
 		end, { desc = "Fuzzy find all files (no ignore)" })
-		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Search all keymaps" })
+		keymap.set("n", "?", "<cmd>Telescope keymaps<cr>", { desc = "Search all keymaps" })
 	end,
 }

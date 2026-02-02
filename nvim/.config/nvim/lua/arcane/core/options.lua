@@ -73,3 +73,4 @@ opt.conceallevel = 0
 opt.showtabline = 0
 opt.statusline = "%f %r %m%="
 opt.winborder = "rounded"
+opt.laststatus = 3
