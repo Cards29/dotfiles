@@ -1,53 +1,47 @@
 vim.g.mapleader = " "
 
-local keymap = vim.keymap -- for conciseness
+local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
--- clear search highlights
+keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+keymap.set("n", "<A-S-j>", "yyP", { desc = "Duplicate line upward" })
+keymap.set("n", "<A-S-k>", "yyp", { desc = "Duplicate line downward" })
+
+keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
+keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
+
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
--- delete single character without copying into register
--- keymap.set("n", "x", '"_x')
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap.set("n", "<leader>sm", "<C-w>| <C-w>_", { desc = "Maximize current split" })
 
--- increment/decrement numbers
--- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
--- keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+keymap.set(
+	"n",
+	"<leader>ss",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word under cursor (global)" }
+)
 
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
-keymap.set("n", "<leader>sm", "<C-w>| <C-w>_", { desc = "maximize window" })
+keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
+keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
--- Move visual selection up/down (ThePrimeagen classic, extremely common)
-keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move line down
-keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move line up
+keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yanking replaced text" })
 
--- Center search jumps
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
+keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
--- Paste over visual selection without losing default register
-keymap.set("n", "<A-S-j>", "yyP", { desc = "Yank line Up (copy)" })
-keymap.set("n", "<A-S-k>", "yyp", { desc = "Yank line Down (copy)" })
+keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable Up arrow" })
+keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable Down arrow" })
+keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>", { desc = "Disable Left arrow" })
+keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>", { desc = "Disable Right arrow" })
 
-keymap.set("x", "<leader>p", [["_dP]]) -- most people use <leader>p or just p
-
--- Replace word under cursor globally (very handy)
-keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Better indenting in visual mode (preserves selection)
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
-
--- Disable hated arrow keys (optional — helps build muscle memory)
-keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
-keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
-keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
-keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
-
--- Move to beginning / end of line with H / L (very common in Primeagen-inspired setups)
-vim.keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" }) -- like ^
-vim.keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" }) -- like $
+keymap.set({ "n", "v", "i" }, "<C-Up>", "<Nop>", { desc = "Disable Ctrl + Up arrow" })
+keymap.set({ "n", "v", "i" }, "<C-Down>", "<Nop>", { desc = "Disable Ctrl + Down arrow" })
+keymap.set({ "n", "v", "i" }, "<C-Left>", "<Nop>", { desc = "Disable Ctrl + Left arrow" })
+keymap.set({ "n", "v", "i" }, "<C-Right>", "<Nop>", { desc = "Disable Ctrl + Right arrow" })
