@@ -1,5 +1,6 @@
 return {
 	"olrtg/nvim-emmet",
+	ft = { "html", "css", "javascriptreact", "typescriptreact" },
 	config = function()
 		vim.keymap.set(
 			{ "n", "v" },
