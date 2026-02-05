@@ -1,9 +1,32 @@
 return {
-	"oskarnurm/koda.nvim",
-	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	priority = 1000, -- make sure to load this before all the other start plugins
-	config = function()
-		-- require("koda").setup({ transparent = true })
-		vim.cmd("colorscheme koda")
-	end,
+	{
+		"marko-cerovac/material.nvim",
+		lazy = false,
+		priority = 1000,
+		init = function()
+			vim.g.material_style = "deep ocean"
+		end,
+		opt = {
+			transparent = false,
+			term_colors = true,
+
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = true },
+				functions = { bold = true, undercurl = true },
+				strings = {},
+				variables = {},
+				operators = {},
+				types = {},
+			},
+
+			plugins = {
+				all = true,
+			},
+		},
+		config = function(_, opt)
+			require("material").setup(opt)
+			vim.cmd.colorscheme("material")
+		end,
+	},
 }
