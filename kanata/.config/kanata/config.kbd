@@ -2,16 +2,16 @@
   process-unmapped-keys yes
 )
 
-(defvar 
-  tap-time 150 hold-time 200
-) 
-
 (defsrc
   caps
 )
 
+(defvar 
+  tap-time 150 hold-time 200
+) 
+
 (defalias
-  caps_esc_ctrl (tap-hold 200 200 esc lctrl)
+  caps_esc_ctrl (tap-hold $tap-time $hold-time esc lctrl)
 )
 
 (deflayer base
