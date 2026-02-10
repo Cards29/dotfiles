@@ -22,6 +22,20 @@ return {
 		vim.g.loaded_netrwPlugin = 1
 	end,
 
+	-- We use config instead of just opts to set up the Snacks integration
+	config = function(_, opts)
+		require("nvim-tree").setup(opts)
+
+		-- SNACKS RENAME INTEGRATION
+		local prev = { new_name = "", old_name = "" } -- Prevents duplicate event triggers
+		require("nvim-tree.api").events.subscribe(require("nvim-tree.api").events.Event.NodeRenamed, function(data)
+			if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+				prev = data
+				Snacks.rename.on_rename_file(data.old_name, data.new_name)
+			end
+		end)
+	end,
+
 	-- automatically passed to require("nvim-tree").setup(opts)
 	opts = {
 		view = {

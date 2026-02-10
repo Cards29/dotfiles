@@ -8,7 +8,7 @@ return {
 			vim.g.undotree_SetFocusWhenToggle = 1 -- Focus undotree when opened
 		end,
 		keys = {
-			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "Undotree: Toggle" },
+			{ "<leader>uu", "<cmd>UndotreeToggle<CR>", desc = "Undotree: Toggle" },
 		},
 	},
 }
