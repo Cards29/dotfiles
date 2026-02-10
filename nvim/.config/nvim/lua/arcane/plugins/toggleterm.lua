@@ -17,9 +17,16 @@ return {
 			border = "curved",
 			winblend = 0,
 		},
+		dir = "cwd",
+		update_focused_file = {
+			enable = true,
+			update_cwd = true,
+		},
 	},
 	keys = {
-		{ "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+		{ "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+		{ "<leader>t1", "<cmd>ToggleTerm 1<cr>", desc = "Toggle Terminal 1" },
+		{ "<leader>t2", "<cmd>ToggleTerm 2<cr>", desc = "Toggle Terminal 2" },
 	},
 	config = function(_, opts)
 		require("toggleterm").setup(opts)
