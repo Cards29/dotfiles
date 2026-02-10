@@ -22,6 +22,10 @@ keymap.set(
 	{ desc = "Replace word under cursor (global)" }
 )
 
+vim.keymap.set("n", "<leader>so", function()
+	vim.cmd("Lazy reload all")
+end, { desc = "Reload Lazy plugins" })
+
 keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
