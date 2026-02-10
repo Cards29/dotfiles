@@ -26,7 +26,7 @@ autoload -U compinit && compinit
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.toml)"
 
 # Variables
-EZA="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
+EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
 
 # Keybindings
 bindkey -e
