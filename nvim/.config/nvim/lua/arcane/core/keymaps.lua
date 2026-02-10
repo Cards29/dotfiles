@@ -25,6 +25,8 @@ keymap.set(
 keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
+keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
+
 keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable Up arrow" })
 keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable Down arrow" })
 keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>", { desc = "Disable Left arrow" })
