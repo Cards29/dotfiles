@@ -3,8 +3,10 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	cmd = "Oil",
 	keys = {
-		{ "<leader>e", "<cmd>Oil --float<cr>", desc = "Explorer (Oil float)" },
+		{ "<leader>ee", "<cmd>Oil --float<cr>", desc = "Explorer (Oil float)" },
 		{ "-", "<cmd>Oil<cr>", desc = "Oil (parent dir)" },
 	},
-	opts = {},
+	opts = {
+		skip_confirm_for_simple_edits = true,
+	},
 }
