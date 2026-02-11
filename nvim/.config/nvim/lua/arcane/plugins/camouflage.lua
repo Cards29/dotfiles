@@ -3,9 +3,9 @@ return {
 	event = "VeryLazy",
 	opts = {},
 	keys = {
-		{ "<leader>hh", "<cmd>CamouflageToggle<cr>", desc = "Toggle Camouflage" },
-		-- { "<leader>cr", "<cmd>CamouflageReveal<cr>", desc = "Reveal Line" },
-		-- { "<leader>cy", "<cmd>CamouflageYank<cr>", desc = "Yank Value" },
-		-- { "<leader>cf", "<cmd>CamouflageFollowCursor<cr>", desc = "Follow Cursor" },
+		{ "<leader>Ct", "<cmd>CamouflageToggle<cr>", desc = "Toggle Camouflage" },
+		{ "<leader>Cr", "<cmd>CamouflageReveal<cr>", desc = "Reveal Line" },
+		{ "<leader>Cy", "<cmd>CamouflageYank<cr>", desc = "Yank Value" },
+		{ "<leader>Cf", "<cmd>CamouflageFollowCursor<cr>", desc = "Follow Cursor" },
 	},
 }
