@@ -1,5 +1,6 @@
 lib
 gemini-cli
 eslint
+npm
 pnpm
 prettier
