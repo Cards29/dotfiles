@@ -378,19 +378,19 @@ binds {
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
 
-    // Change
-    Mod+T hotkey-overlay-title=null { spawn "alacritty"; }
-    Mod+B hotkey-overlay-title=null { spawn "brave"; }
-
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
+
+    Mod+T hotkey-overlay-title=null { spawn "alacritty"; }
+    Mod+B hotkey-overlay-title=null { spawn "brave"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; } // Change
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Ctrl+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+W hotkey-overlay-title="Wi-Fi (wlctl)" { spawn "kitty" "--class" "wlctl" "-e" "wlctl"; }
+    Mod+M {  spawn "wl-kbptr"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -587,11 +587,11 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Shift+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 
@@ -625,7 +625,6 @@ binds {
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
     // Mod+W { toggle-column-tabbed-display; }
-    Ctrl+Mod+W { spawn "sh" "-c" "pgrep -x waybar && pkill waybar || waybar &"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
