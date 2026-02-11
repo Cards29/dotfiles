@@ -1,26 +1,22 @@
 #!/bin/bash
 
-swww query || swww init
+# Directory containing your wallpapers
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 
-DIR="$HOME/Pictures/wallpapers"
-INDEX_FILE="/tmp/swww_wall_index"
-mapfile -t PICS < <(find "$DIR" -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | sort)
-
-TOTAL=${#PICS[@]}
-
-# Read last index or default to -1
-if [[ -f "$INDEX_FILE" ]]; then
-    INDEX=$(<"$INDEX_FILE")
-else
-    INDEX=-1
+# Ensure swww-daemon is running
+if ! pgrep -x "swww-daemon" > /dev/null; then
+    swww-daemon &
+    sleep 0.5 # Give it a moment to initialize
 fi
 
-# Calculate next index
-INDEX=$(( (INDEX + 1) % TOTAL ))
+# Pick a random wallpaper
+RANDOM_WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
 
-# Save index for next time
-echo "$INDEX" > "$INDEX_FILE"
-
-# Show the wallpaper
-swww img "${PICS[$INDEX]}" --transition-type wipe --transition-fps 60 --transition-duration 1.5
-
+# Transition settings
+# --transition-type: outer, center, any, wave, wipe, etc.
+# --transition-pos: coordinates or corners like 'top-right'
+swww img "$RANDOM_WALLPAPER" \
+    --transition-type grow \
+    --transition-pos top-right \
+    --transition-duration 2 \
+    --transition-fps 60
