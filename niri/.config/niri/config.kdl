@@ -335,7 +335,7 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id="kitty"
     match app-id="brave-browser"
-    default-column-width { proportion 1.0; } 
+    open-fullscreen true
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
