@@ -26,7 +26,7 @@ Some niri config for arch.
 
 ## Demo
 
-[![Watch the demo](https://img.youtube.com/vi/jh_z4gddL-A/maxresdefault.jpg)](https://youtu.be/jh_z4gddL-A)
+[![Watch the demo](https://img.youtube.com/vi/koUdmD0984U/maxresdefault.jpg)](https://youtu.be/koUdmD0984U)
 
 ## Core Stack
 
