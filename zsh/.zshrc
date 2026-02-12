@@ -95,7 +95,7 @@ export PGDATABASE='postgres'
 # Path exports
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/.npm-global/bin:$PATH"
-
+export PATH=/home/arcane/.opencode/bin:$PATH
 
 
 # Shell integration
