@@ -20,3 +20,7 @@ swww img "$RANDOM_WALLPAPER" \
     --transition-pos top-right \
     --transition-duration 2 \
     --transition-fps 60
+
+# Update symlink for hyprlock to track the current wallpaper
+mkdir -p "$HOME/.cache"
+ln -sf "$RANDOM_WALLPAPER" "$HOME/.cache/current_wallpaper"

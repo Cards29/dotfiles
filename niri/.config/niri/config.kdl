@@ -269,7 +269,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "swww-daemon"
-spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "before-sleep" "swaylock"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock" "before-sleep" "hyprlock"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
@@ -388,7 +388,7 @@ binds {
     Mod+B hotkey-overlay-title="Open Browser" { spawn "brave"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Ctrl+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Ctrl+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Mod+Ctrl+W hotkey-overlay-title="Wi-Fi (wlctl)" { spawn "kitty" "--class" "wlctl" "-e" "wlctl"; }
     Mod+M {  spawn "wl-kbptr"; }
 
