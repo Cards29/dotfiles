@@ -21,6 +21,7 @@ Some niri config for arch.
 
 <p align="center">
 <h3>Just showing niri overview 2</h3>
+
   <img src="screenshots/Niri scrolling tiling 2.png" width="500" alt="Niri Window Mangaer">
 </p>
 
@@ -30,8 +31,7 @@ Some niri config for arch.
 </p>
 
 ## Demo
-
-<h3>Click to watch</h3>
+### Click to watch
 [![Watch the demo](https://img.youtube.com/vi/koUdmD0984U/maxresdefault.jpg)](https://youtu.be/koUdmD0984U)
 
 ## Core Stack
