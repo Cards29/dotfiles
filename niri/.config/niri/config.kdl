@@ -426,6 +426,7 @@ binds {
 
     Mod+F12 { screenshot; }
     Ctrl+Mod+F12 { screenshot-window; }
+    Ctrl+Shift+Mod+F12 { screenshot-screen; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
