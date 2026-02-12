@@ -71,6 +71,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
 
 opt.conceallevel = 0
 opt.showtabline = 0
-opt.statusline = "%f %r %m%="
+-- opt.statusline = "%f %r %m%="
 opt.winborder = "rounded"
 opt.laststatus = 3
