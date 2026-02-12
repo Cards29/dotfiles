@@ -38,10 +38,11 @@ Some niri config for arch.
 
 - **Compositors:** Hyprland & Niri
 - **Editor:** Neovim
-- **Shell:** Zsh + Oh My Posh
+- **Shell:** Zsh + Oh My Posh (looks like p10k pure, so its good)
 - **Terminal:** Kitty + Tmux
-- **Keyboard:** Kanata (remaps)
+- **Keyboard:** Kanata
 - **File Manager:** Yazi
+- **Wallpaper Engine:** swww
 
 ## Progress
 
