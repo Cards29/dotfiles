@@ -5,14 +5,14 @@ return {
 	cmd = "CompetiTest",
 
 	keys = {
-		{ "<leader>ca", "<cmd>CompetiTest add_testcase<CR>", desc = "CompetiTest: Add testcase" },
-		{ "<leader>ce", "<cmd>CompetiTest edit_testcase<CR>", desc = "CompetiTest: Edit testcase" },
-		{ "<leader>cr", "<cmd>CompetiTest run<CR>", desc = "CompetiTest: Run testcase" },
-		{ "<leader>cd", "<cmd>CompetiTest delete_testcase<CR>", desc = "CompetiTest: Delete testcase" },
-		{ "<leader>cs", "<cmd>CompetiTest show_ui<CR>", desc = "CompetiTest: Show UI" },
-		{ "<leader>ct", "<cmd>CompetiTest receive testcases<CR>", desc = "CompetiTest: Receive testcases" },
-		{ "<leader>cp", "<cmd>CompetiTest receive problem<CR>", desc = "CompetiTest: Receive problem" },
-		{ "<leader>cc", "<cmd>CompetiTest receive contest<CR>", desc = "CompetiTest: Receive contest" },
+		{ "<leader>CPa", "<cmd>CompetiTest add_testcase<CR>", desc = "CompetiTest: Add testcase" },
+		{ "<leader>CPe", "<cmd>CompetiTest edit_testcase<CR>", desc = "CompetiTest: Edit testcase" },
+		{ "<leader>CPr", "<cmd>CompetiTest run<CR>", desc = "CompetiTest: Run testcase" },
+		{ "<leader>CPd", "<cmd>CompetiTest delete_testcase<CR>", desc = "CompetiTest: Delete testcase" },
+		{ "<leader>CPs", "<cmd>CompetiTest show_ui<CR>", desc = "CompetiTest: Show UI" },
+		{ "<leader>CPt", "<cmd>CompetiTest receive testcases<CR>", desc = "CompetiTest: Receive testcases" },
+		{ "<leader>CPp", "<cmd>CompetiTest receive problem<CR>", desc = "CompetiTest: Receive problem" },
+		{ "<leader>CPc", "<cmd>CompetiTest receive contest<CR>", desc = "CompetiTest: Receive contest" },
 	},
 
 	opts = {
