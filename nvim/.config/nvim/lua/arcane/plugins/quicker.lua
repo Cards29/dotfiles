@@ -22,13 +22,4 @@ return {
 			},
 		},
 	},
-	keys = {
-		{
-			"<leader>qo",
-			function()
-				require("quicker").toggle()
-			end,
-			desc = "Toggle quickfix",
-		},
-	},
 }
