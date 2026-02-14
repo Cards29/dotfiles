@@ -18,9 +18,13 @@ return {
 				lualine_b = {},
 				lualine_c = { "filename" },
 
-				lualine_x = {},
+				lualine_x = {
+					function()
+						return "󰃭 " .. os.date("%a %b %d") .. " | 󰥔 " .. os.date("%H:%M")
+					end,
+				},
 				lualine_y = { "filetype" },
-				lualine_z = { "branch" },
+				lualine_z = {},
 			},
 
 			inactive_sections = {
