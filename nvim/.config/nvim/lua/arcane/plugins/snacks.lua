@@ -82,13 +82,6 @@ return {
 			desc = "Lazygit Current File Log",
 		},
 		{
-			"<leader>gl",
-			function()
-				Snacks.git.blame_line()
-			end,
-			desc = "Git Blame Line",
-		},
-		{
 			"<leader>gL",
 			function()
 				Snacks.lazygit.log()
