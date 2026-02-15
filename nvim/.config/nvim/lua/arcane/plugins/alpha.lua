@@ -38,11 +38,16 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+			dashboard.button("e", "+  > New File", "<cmd>ene<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>FzfLua files<CR>"),
-			dashboard.button("SPC fs", "  > Find Word", "<cmd>FzfLua live_grep<CR>"),
-			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
+			dashboard.button("SPC fr", "󱋡  > Recent Files", "<cmd>FzfLua oldfiles<CR>"),
+			dashboard.button("SPC fs", "󰍉  > Search Project", "<cmd>FzfLua live_grep<CR>"),
+			dashboard.button("SPC nf", "󰵅  > Notifications", "<cmd>lua Snacks.notifier.show_history()<CR>"),
+			dashboard.button("SPC e ", "󰙅  > File Explorer", "<cmd>Oil --float<CR>"),
+			dashboard.button("SPC y ", "󰇥  > File Manager (Yazi)", "<cmd>Yazi<CR>"),
+			dashboard.button("SPC . ", "󱞁  > Scratch Pad", "<cmd>lua Snacks.scratch()<CR>"),
+			dashboard.button("SPC xt", "󰃭  > Todo Comments", "<cmd>Trouble todo toggle<CR>"),
+			dashboard.button("q", "󰈆  > Quit NVIM", "<cmd>qa<CR>"),
 		}
 
 		-- Send config to alpha
