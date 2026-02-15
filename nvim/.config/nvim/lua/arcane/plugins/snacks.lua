@@ -68,7 +68,7 @@ return {
 
 		-- --- GIT & GITHUB ---
 		{
-			"<leader>gg",
+			"<leader>lg",
 			function()
 				Snacks.lazygit()
 			end,
