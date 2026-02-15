@@ -5,19 +5,43 @@ return {
 	cmd = "FzfLua",
 
 	keys = {
-		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Fuzzy find files in cwd" },
-		{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Find string in cwd" },
-		{ "<leader>fc", "<cmd>FzfLua grep_cword<cr>", desc = "Find string under cursor" },
-		{ "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Search keymaps" },
+		-- files and project
+		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
+		{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+		{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent files" },
+		{ "<leader>fl", "<cmd>FzfLua blines<cr>", desc = "Search current file" },
+		{ "<leader>fL", "<cmd>FzfLua lines<cr>", desc = "Search open buffers" },
+		{ "<leader>ft", "<cmd>FzfLua treesitter<cr>", desc = "Symbols (Treesitter)" },
+		{ "<leader>fq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix list" },
+
+		-- search
+		{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Search project" },
+		{ "<leader>fS", "<cmd>FzfLua live_grep_resume<cr>", desc = "Resume search" },
+		{ "<leader>fc", "<cmd>FzfLua grep_cword<cr>", desc = "Search word" },
+		{
+			"<leader>fv",
+			"<cmd>FzfLua grep_visual<cr>",
+			mode = "v",
+			desc = "Search selection",
+		},
+		{ "<leader>f/", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Search current file" },
+
+		-- misc
+		{ "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "List marks" },
+		{ "<leader>fB", "<cmd>FzfLua builtin<cr>", desc = "Fzf-lua builtins" },
+		{ "<leader>fM", "<cmd>FzfLua manpages<cr>", desc = "Search man pages" },
+		{ "<leader>fC", "<cmd>FzfLua colorschemes<cr>", desc = "Choose colorscheme" },
+
 		{ "?", "<cmd>FzfLua keymaps<cr>", desc = "Search keymaps" },
+
 		{
 			"<leader>fa",
 			function()
 				require("fzf-lua").files({
-					fd_opts = "--type f --no-ignore --hidden --strip-cwd-prefix",
+					fd_opts = "--type f --no-ignore --hidden --follow --exclude .git --color=never --strip-cwd-prefix",
 				})
 			end,
-			desc = "Fuzzy find all files (no ignore)",
+			desc = "All files (hidden + ignored)",
 		},
 	},
 
