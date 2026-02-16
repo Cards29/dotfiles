@@ -12,7 +12,6 @@ return {
 		{ "<leader>fl", "<cmd>FzfLua blines<cr>", desc = "Search current file" },
 		{ "<leader>fL", "<cmd>FzfLua lines<cr>", desc = "Search open buffers" },
 		{ "<leader>ft", "<cmd>FzfLua treesitter<cr>", desc = "Symbols (Treesitter)" },
-		{ "<leader>fq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix list" },
 
 		-- search
 		{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Search project" },
