@@ -9,6 +9,11 @@ keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
+keymap.set("n", "<leader>w", ":wa<CR>", { desc = "Write all" })
+keymap.set("n", "<leader>q", ":wqa<CR>", { desc = "Write & quit all" })
+keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force quit" })
+keymap.set("n", "<leader>o", ":update<CR> :so $MYVIMRC<CR>", { desc = "Reload config" })
+
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
