@@ -9,13 +9,19 @@ return {
 		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
 		{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
 		{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent files" },
-		{ "<leader>fl", "<cmd>FzfLua blines<cr>", desc = "Search current file" },
-		{ "<leader>fL", "<cmd>FzfLua lines<cr>", desc = "Search open buffers" },
 		{ "<leader>ft", "<cmd>FzfLua treesitter<cr>", desc = "Symbols (Treesitter)" },
+		{
+			"<leader>fa",
+			function()
+				require("fzf-lua").files({
+					fd_opts = "--type f --no-ignore --hidden --follow --exclude .git --color=never --strip-cwd-prefix",
+				})
+			end,
+			desc = "All files (hidden + ignored)",
+		},
 
 		-- search
 		{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Search project" },
-		{ "<leader>fS", "<cmd>FzfLua live_grep_resume<cr>", desc = "Resume search" },
 		{ "<leader>fc", "<cmd>FzfLua grep_cword<cr>", desc = "Search word" },
 		{
 			"<leader>fv",
@@ -32,16 +38,6 @@ return {
 		{ "<leader>fC", "<cmd>FzfLua colorschemes<cr>", desc = "Choose colorscheme" },
 
 		{ "?", "<cmd>FzfLua keymaps<cr>", desc = "Search keymaps" },
-
-		{
-			"<leader>fa",
-			function()
-				require("fzf-lua").files({
-					fd_opts = "--type f --no-ignore --hidden --follow --exclude .git --color=never --strip-cwd-prefix",
-				})
-			end,
-			desc = "All files (hidden + ignored)",
-		},
 	},
 
 	opts = {
