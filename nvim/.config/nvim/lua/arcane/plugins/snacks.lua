@@ -173,12 +173,5 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		{
-			"<leader>bd",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete Buffer",
-		},
 	},
 }
