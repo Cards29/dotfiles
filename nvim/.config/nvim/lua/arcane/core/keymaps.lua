@@ -4,11 +4,18 @@ local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
+keymap.set("n", "<leader>mp", function()
+	local scene_name = vim.fn.expand("<cword>")
+	local file_name = vim.fn.expand("%")
+
+	vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
+end, { desc = "Run Manim on class under cursor" })
+
 keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
 keymap.set("n", "<leader>w", ":wa<CR>", { desc = "Write all" })
-keymap.set("n", "<leader>q", ":wqa<CR>", { desc = "Write & quit all" })
+keymap.set("n", "<leader>q", ":q<CR>", { desc = "Write & quit all" })
 keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force quit" })
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
