@@ -3,17 +3,23 @@
 )
 
 (defsrc
-  caps
+  caps a s d w h j u q e r f i
 )
 
 (defvar 
-  tap-time 150 hold-time 200
+  tap-time 150
+  hold-time 200
 ) 
 
 (defalias
-  caps_esc_ctrl (tap-hold $tap-time $hold-time esc lctrl)
+  caps_esc_ctrl (multi f24 ( tap-hold $tap-time $hold-time esc lctl ))
+  i-navigation (multi f24 (tap-hold $tap-time $hold-time i (layer-toggle navigation)))
 )
 
-(deflayer base
-  @caps_esc_ctrl
+(deflayer default
+  @caps_esc_ctrl a s d w h j u q e r f @i-navigation
+)
+
+(deflayer navigation
+  _ left down right up bspc del ret home end pgup pgdn _  
 )
