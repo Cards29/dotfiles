@@ -102,8 +102,9 @@ export PATH=/home/arcane/.opencode/bin:$PATH
 # Shell integration
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+eval "$(thefuck --alias)"
+eval "$(thefuck --alias fk)"
+eval "$(direnv hook zsh)"
 
 
 # -------------------fzf------------------------------
