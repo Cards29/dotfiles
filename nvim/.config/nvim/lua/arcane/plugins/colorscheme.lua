@@ -28,7 +28,6 @@ return {
 	{ "EdenEast/nightfox.nvim", lazy = true },
 	{ "scottmckendry/cyberdream.nvim", lazy = true },
 	{ "AlexvZyl/nordic.nvim", lazy = true },
-	{ "olimorris/onedarkpro.nvim", lazy = true },
 	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
 	{ "savq/melange-nvim", lazy = true },
 	{ "kaicataldo/material.vim", lazy = true },
