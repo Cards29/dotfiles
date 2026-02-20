@@ -4,9 +4,11 @@ return {
 	keys = {
 		{ "<leader>mv", "<cmd>Markview splitToggle<CR>", { desc = "Markview Split Toggle" } },
 	},
-	opt = {
+	opts = {
+		initial_state = false,
 		preview = {
 			icon_provider = "devicons",
+			enable = false,
 		},
 	},
 }
