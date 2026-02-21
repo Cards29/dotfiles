@@ -65,7 +65,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 # Aliases
 alias ls="$EZA_COMMAND"
 alias v="nvim"
-alias grep='rg'
+alias mv="NVIM_APPNAME=min-nvim nvim"
+alias grep="rg"
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
 alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
 alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
