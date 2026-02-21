@@ -4,7 +4,6 @@ return {
 	cmd = "Oil",
 	keys = {
 		{ "<leader>e", "<cmd>Oil --float<cr>", desc = "Explorer (Oil float)" },
-		{ "-", "<cmd>Oil<cr>", desc = "Oil (parent dir)" },
 	},
 	opts = {
 		skip_confirm_for_simple_edits = true,
