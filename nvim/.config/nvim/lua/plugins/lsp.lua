@@ -2,10 +2,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Mason", "MasonInstall", "MasonUpdate" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim", -- For linters/formatters
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "saghen/blink.cmp",
     },
     config = function()
       local keymap = vim.keymap
@@ -21,7 +23,7 @@ return {
         },
       })
 
-      -- 2. Setup Mason LSP Config (Handles LSP Servers)
+      -- 2. Setup Mason LSP Config
       local servers = {
         "ts_ls", "html", "cssls", "tailwindcss", "svelte",
         "lua_ls", "graphql", "emmet_ls", "prismals", "pyright", "eslint"
@@ -32,18 +34,26 @@ return {
         automatic_installation = true,
       })
 
-      -- 3. Setup Mason Tool Installer (Handles Linters/Formatters)
+      -- 3. Setup Mason Tool Installer (Linters/Formatters)
       require("mason-tool-installer").setup({
         ensure_installed = {
-          "prettier", -- formatter
-          "stylua",   -- lua formatter
-          "eslint_d", -- linter (requested in your image)
+          "prettier",
+          "stylua",
+          "eslint_d",
         },
       })
 
-      -- 4. Enable servers via built-in Neovim 0.10+ command
-      -- This tells Neovim which servers to actually start
-      vim.lsp.enable(servers)
+      -- 4. Modern Neovim 0.11+ Server Setup with Blink
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+      for _, server in ipairs(servers) do
+        -- Use the new native API to avoid the lspconfig framework deprecation
+        vim.lsp.config(server, {
+          capabilities = capabilities,
+        })
+        -- Actually enable the server
+        vim.lsp.enable(server)
+      end
 
       -- 5. Diagnostic Config
       vim.diagnostic.config({
@@ -51,14 +61,14 @@ return {
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN]  = " ",
-            [vim.diagnostic.severity.HINT]  = "󰠠 ",
-            [vim.diagnostic.severity.INFO]  = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+            [vim.diagnostic.severity.INFO] = " ",
           },
         },
       })
 
-      -- 6. LSP Attach Autocmd (Your existing keymaps)
+      -- 6. LSP Attach Autocmd (Keymaps)
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
