@@ -1,8 +1,10 @@
+local default_colorscheme = "boo-berry"
+
 return {
   {
     "sainnhe/everforest",
     priority = 1000,
-    lazy = false,
+    lazy = default_colorscheme ~= "everforest",
     config = function()
       vim.g.everforest_background = "soft"
       vim.g.everforest_enable_italic = 1
@@ -15,15 +17,25 @@ return {
       vim.g.everforest_diagnostic_line_highlight = 0
       vim.g.everforest_diagnostic_virtual_text = "grey"
       vim.g.everforest_current_word = "grey background"
-
-      vim.cmd.colorscheme("everforest")
     end,
   },
 
-  { "catppuccin/nvim",         name = "catppuccin", lazy = true },
-  { "folke/tokyonight.nvim",   lazy = true },
-  { "rebelot/kanagawa.nvim",   lazy = true },
-  { "rose-pine/neovim",        name = "rose-pine",  lazy = true },
-  { "kaicataldo/material.vim", lazy = true },
-  { "oskarnurm/koda.nvim",     lazy = true },
+  { "catppuccin/nvim",           name = "catppuccin",                       lazy = default_colorscheme ~= "catppuccin" },
+  { "folke/tokyonight.nvim",     lazy = default_colorscheme ~= "tokyonight" },
+  { "rebelot/kanagawa.nvim",     lazy = default_colorscheme ~= "kanagawa" },
+  { "rose-pine/neovim",          name = "rose-pine",                        lazy = default_colorscheme ~= "rose-pine" },
+  { "kaicataldo/material.vim",   lazy = default_colorscheme ~= "material" },
+  { "oskarnurm/koda.nvim",       lazy = default_colorscheme ~= "koda" },
+  { "mrpbennett/boo-berry.nvim", lazy = default_colorscheme ~= "boo-berry" },
+
+  {
+    -- applies the default colorscheme after the chosen plugin's config runs
+    name = "default-colorscheme",
+    dir = vim.fn.stdpath("config"),
+    priority = 999,
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme(default_colorscheme)
+    end,
+  },
 }
