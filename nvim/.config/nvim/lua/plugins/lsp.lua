@@ -2,29 +2,63 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim", -- For linters/formatters
+    },
     config = function()
       local keymap = vim.keymap
 
-      vim.diagnostic.config({ virtual_text = true, })
+      -- 1. Setup Mason
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+          },
+        },
+      })
 
-      -- Enable servers
+      -- 2. Setup Mason LSP Config (Handles LSP Servers)
       local servers = {
-        "ts_ls",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "svelte",
-        "lua_ls",
-        "graphql",
-        "emmet_ls",
-        "prismals",
-        "pyright",
-        "eslint"
+        "ts_ls", "html", "cssls", "tailwindcss", "svelte",
+        "lua_ls", "graphql", "emmet_ls", "prismals", "pyright", "eslint"
       }
 
+      require("mason-lspconfig").setup({
+        ensure_installed = servers,
+        automatic_installation = true,
+      })
+
+      -- 3. Setup Mason Tool Installer (Handles Linters/Formatters)
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "prettier", -- formatter
+          "stylua",   -- lua formatter
+          "eslint_d", -- linter (requested in your image)
+        },
+      })
+
+      -- 4. Enable servers via built-in Neovim 0.10+ command
+      -- This tells Neovim which servers to actually start
       vim.lsp.enable(servers)
 
-      -- LSP keymaps & buffer-local settings
+      -- 5. Diagnostic Config
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN]  = " ",
+            [vim.diagnostic.severity.HINT]  = "󰠠 ",
+            [vim.diagnostic.severity.INFO]  = " ",
+          },
+        },
+      })
+
+      -- 6. LSP Attach Autocmd (Your existing keymaps)
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
@@ -74,22 +108,6 @@ return {
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
         end,
       })
-
-      -- Diagnostic signs
-      local severity = vim.diagnostic.severity
-      vim.diagnostic.config({
-        signs = {
-          text = {
-            [severity.ERROR] = " ",
-            [severity.WARN]  = " ",
-            [severity.HINT]  = "󰠠 ",
-            [severity.INFO]  = " ",
-          },
-        },
-      })
-
-      -- Optional: inlay hints (Lua >= 0.11)
-      -- vim.lsp.inlay_hint.enable(true)
     end,
   },
 }

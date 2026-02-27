@@ -65,7 +65,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 # Aliases
 alias ls="$EZA_COMMAND"
 alias v="nvim"
-alias m="NVIM_APPNAME=min-nvim nvim"
 alias grep="rg"
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
 alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
@@ -97,7 +96,6 @@ export PGDATABASE='postgres'
 # Path exports
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH=/home/arcane/.opencode/bin:$PATH
 
 
 # Shell integration
