@@ -3,4 +3,4 @@
 **/caelestia.theme
 **/caelestia.theme
 AGENTS.md
-lazy-lock.json
+/nvim/.config/nvim/lazy-lock.json
