@@ -194,12 +194,6 @@ return {
       mode = { "n", "t" },
     },
     {
-      "jk",
-      [[<C-\><C-n>]],
-      desc = "Exit Terminal Mode",
-      mode = "t",
-    },
-    {
       "<leader>tf",
       function()
         Snacks.terminal.toggle()
