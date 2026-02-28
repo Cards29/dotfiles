@@ -10,6 +10,7 @@ return {
 		notify = { enabled = true }, -- Wraps vim.notify to use the snacks notifier
 		scroll = { enabled = true }, -- Smooth scrolling animations
 		statuscolumn = { enabled = true }, -- Custom status column with signs, numbers, and folds
+		image = { enabled = true }, -- Uses the kitty stuff
 
 		-- --- File & Buffer Management ---
 		bigfile = { enabled = true }, -- Optimizes performance when opening very large files
@@ -17,6 +18,7 @@ return {
 		quickfile = { enabled = true }, -- Faster file opening by bypassing heavy autocmds
 		rename = { enabled = true }, -- LSP-integrated file renaming with UI
 		win = { enabled = true }, -- High-performance window management and API
+		explorar = { enabled = true }, -- Explorar
 
 		-- --- Search & Navigation ---
 		scope = { enabled = true }, -- Scope-based logic for navigation and highlighting

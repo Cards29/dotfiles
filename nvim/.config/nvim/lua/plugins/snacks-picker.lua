@@ -9,6 +9,16 @@ return {
 				file = { filename_first = true },
 			},
 
+			sources = {
+				explorer = {
+					layout = {
+						layout = {
+							position = "right", -- This moves the explorer to the right
+						},
+					},
+				},
+			},
+
 			win = {
 				input = {
 					keys = {
@@ -42,13 +52,13 @@ return {
 	},
 	keys = {
 		-- --- FILES & PROJECT ---
-		{
-			"<leader><space>",
-			function()
-				Snacks.picker.smart()
-			end,
-			desc = "Smart Find Files",
-		},
+		-- {
+		-- 	"<leader><space>",
+		-- 	function()
+		-- 		Snacks.picker.smart()
+		-- 	end,
+		-- 	desc = "Smart Find Files",
+		-- },
 		{
 			"<leader>ff",
 			function()
