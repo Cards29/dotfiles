@@ -22,13 +22,6 @@ keymap.set("n", "<leader>-", "<cmd>vertical resize -2<CR>", { desc = "Decrease w
 keymap.set("n", "<leader>+", "<cmd>horizontal resize +2<CR>", { desc = "Increase height" })
 keymap.set("n", "<leader>_", "<cmd>horizontal resize -2<CR>", { desc = "Decrease height" })
 
-keymap.set(
-  "n",
-  "<leader>ss",
-  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Replace word under cursor (global)" }
-)
-
 keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
@@ -45,12 +38,12 @@ keymap.set("n", "x", '"_x', { desc = "Delete character without copying" })
 keymap.set({ "n", "v" }, "X", '"_dd<Esc>', { desc = "Delete without yanking" })
 
 keymap.set("n", "dd", function()
-  local line_content = vim.api.nvim_get_current_line()
-  if line_content:match("^%s*$") then
-    vim.api.nvim_feedkeys('"_dd', "n", false)
-  else
-    vim.api.nvim_feedkeys("dd", "n", false)
-  end
+	local line_content = vim.api.nvim_get_current_line()
+	if line_content:match("^%s*$") then
+		vim.api.nvim_feedkeys('"_dd', "n", false)
+	else
+		vim.api.nvim_feedkeys("dd", "n", false)
+	end
 end, { desc = "Delete line" })
 
 keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
@@ -62,10 +55,10 @@ keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 -- add here
 
 keymap.set("n", "<leader>mp", function()
-  local scene_name = vim.fn.expand("<cword>")
-  local file_name = vim.fn.expand("%")
+	local scene_name = vim.fn.expand("<cword>")
+	local file_name = vim.fn.expand("%")
 
-  vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
+	vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
 end, { desc = "Run Manim on class under cursor" })
 
 keymap.set("n", "<leader>e", "<cmd>Vex<CR>", { desc = "Open Netrw" })
