@@ -8,9 +8,25 @@ return {
 
 	keys = {
 		-- diagnostics / lists
-		{ "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", desc = "Workspace diagnostics" },
-		{ "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Document diagnostics" },
-		{ "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Todo list" },
+		{ "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Document diagnostics" },
+		{ "<leader>xd", "<cmd>Trouble diagnostics toggle<CR>", desc = "Workspace diagnostics" },
+
+		-- copied from the lsp file
+		{ "<leader>d", vim.diagnostic.open_float, desc = "Line diagnostics" },
+		{
+			"[d",
+			function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end,
+			desc = "Previous diagnostic",
+		},
+		{
+			"]d",
+			function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end,
+			desc = "Next diagnostic",
+		},
 
 		-- code navigation
 		{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", desc = "Symbols outline" },
