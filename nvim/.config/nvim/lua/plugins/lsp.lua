@@ -10,8 +10,6 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
-			local keymap = vim.keymap
-
 			-- 1. Setup Mason
 			require("mason").setup({
 				ui = {
@@ -36,6 +34,7 @@ return {
 				"prismals",
 				"pyright",
 				"eslint",
+				"clangd",
 			}
 
 			require("mason-lspconfig").setup({
