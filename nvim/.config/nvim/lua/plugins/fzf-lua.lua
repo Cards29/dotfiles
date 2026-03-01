@@ -1,43 +1,18 @@
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	enabled = false,
+	enabled = true,
 
 	cmd = "FzfLua",
 
 	keys = {
-		-- files and project
-		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
-		{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
-		{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent files" },
 		{
-			"<leader>fa",
+			"<leader>fF",
 			function()
-				require("fzf-lua").files({
-					fd_opts = "--type f --no-ignore --hidden --follow --exclude .git --color=never --strip-cwd-prefix",
-				})
+				require("fzf-lua").files()
 			end,
-			desc = "All files (hidden + ignored)",
+			desc = "Find Files (fzf alt)",
 		},
-
-		-- search
-		{ "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Search project" },
-		{ "<leader>fc", "<cmd>FzfLua grep_cword<cr>", desc = "Search word" },
-		{
-			"<leader>fv",
-			"<cmd>FzfLua grep_visual<cr>",
-			mode = "v",
-			desc = "Search selection",
-		},
-
-		-- misc
-		{ "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "List marks" },
-		{ "<leader>fM", "<cmd>FzfLua manpages<cr>", desc = "Search man pages" },
-		{ "<leader>fR", "<cmd>FzfLua registers<cr>", desc = "List registers" },
-		{ "<leader>fB", "<cmd>FzfLua builtin<cr>", desc = "Fzf-lua builtins" },
-		{ "<leader>fC", "<cmd>FzfLua colorschemes<cr>", desc = "Choose colorscheme" },
-
-		{ "?", "<cmd>FzfLua keymaps<cr>", desc = "Search keymaps" },
 	},
 
 	opts = {
