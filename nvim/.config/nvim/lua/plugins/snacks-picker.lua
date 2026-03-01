@@ -59,13 +59,13 @@ return {
 		-- 	end,
 		-- 	desc = "Smart Find Files",
 		-- },
-		{
-			"<leader>ff",
-			function()
-				Snacks.picker.files()
-			end,
-			desc = "Find files",
-		},
+		-- {
+		-- 	"<leader>ff",
+		-- 	function()
+		-- 		Snacks.picker.files()
+		-- 	end,
+		-- 	desc = "Find files",
+		-- },
 
 		{
 			"<leader>fb",
@@ -141,7 +141,7 @@ return {
 			function()
 				Snacks.picker.registers()
 			end,
-			desc = "List marks",
+			desc = "List register",
 		},
 		{
 			"<leader>fp",

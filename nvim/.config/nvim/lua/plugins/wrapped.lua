@@ -3,7 +3,7 @@ return {
 	dependencies = { "nvzone/volt" },
 	cmd = { "NvimWrapped" },
 	keys = {
-		{ "<leader>rr", "<cmd>NvimWrapped<CR>", { desc = "Open Nvim Config Activity" } },
+		{ "<leader><leader>", "<cmd>NvimWrapped<CR>", { desc = "Open Nvim Config Activity" } },
 	},
 	opts = {
 		path = vim.fn.expand("~/dotfiles/nvim/.config/nvim"),
