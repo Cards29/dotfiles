@@ -54,6 +54,16 @@ keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
 -- add here
 
+keymap.set("n", "<leader>cc", function()
+	local color = vim.g.colors_name
+	if color then
+		require("util.color").save(color)
+		Snacks.notify("Colorscheme saved: " .. color)
+	else
+		Snacks.notify("No colorscheme set", { level = "warn" })
+	end
+end, { desc = "Save Current Colorscheme" })
+
 keymap.set("n", "<leader>mp", function()
 	local scene_name = vim.fn.expand("<cword>")
 	local file_name = vim.fn.expand("%")

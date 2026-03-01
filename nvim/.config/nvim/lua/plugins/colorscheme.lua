@@ -1,4 +1,5 @@
-local default_colorscheme = "tokyonight"
+local color_util = require("util.color")
+local default_colorscheme = color_util.get_saved()
 
 return {
 	{
