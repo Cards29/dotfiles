@@ -34,6 +34,17 @@ return {
 					-- LazyVim often puts 'noice' or 'lazy' status here
 					-- This is a standard 'diff' component
 					{
+						-- We call the function directly here
+						function()
+							return require("lazy.status").updates()
+						end,
+						-- We check if updates exist before showing it
+						cond = function()
+							return require("lazy.status").has_updates()
+						end,
+						color = { fg = "#ff9e64" },
+					},
+					{
 						"diff",
 						symbols = {
 							added = " ",
