@@ -63,6 +63,22 @@ return {
 				vim.lsp.enable(server)
 			end
 
+			-- ADD THIS HERE for Rust (since it's not in the 'servers' list)
+			vim.lsp.config("rust_analyzer", {
+				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							command = "clippy", -- Better linting than standard 'check'
+						},
+						procMacro = {
+							enable = true,
+						},
+					},
+				},
+			})
+			vim.lsp.enable("rust_analyzer")
+
 			-- 5. Diagnostic Config
 			vim.diagnostic.config({
 				virtual_text = true,
