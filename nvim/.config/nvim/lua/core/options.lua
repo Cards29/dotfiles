@@ -6,15 +6,15 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2    -- 2 spaces for indent width
-opt.expandtab = true  -- expand tab to spaces
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 opt.wrap = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 opt.cursorline = true
 
@@ -24,7 +24,7 @@ opt.cursorline = true
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes"  -- show sign column so that text doesn't shift
+opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -44,29 +44,34 @@ vim.g.tmux_navigator_disable_netrw_workaround = 1
 
 local group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = group,
-  desc = "Highlight yanked text",
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = "YankHighlight",
-      timeout = 200,
-    })
-  end,
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = group,
+	callback = function()
+		vim.api.nvim_set_hl(0, "YankHighlight", {
+			bg = "#9a5a3a",
+			fg = "#d8d8e6",
+		})
+	end,
 })
 
-vim.api.nvim_set_hl(0, "YankHighlight", {
-  bg = "#9a5a3a",
-  fg = "#d8d8e6",
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = group,
+	desc = "Highlight yanked text",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "YankHighlight",
+			timeout = 200,
+		})
+	end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
-  callback = function()
-    local directory = vim.fn.expand("%:p:h")
-    if not directory:match("^%w+:") and vim.fn.isdirectory(directory) == 0 then
-      vim.fn.mkdir(directory, "p")
-    end
-  end,
+	callback = function()
+		local directory = vim.fn.expand("%:p:h")
+		if not directory:match("^%w+:") and vim.fn.isdirectory(directory) == 0 then
+			vim.fn.mkdir(directory, "p")
+		end
+	end,
 })
 
 opt.undofile = true
