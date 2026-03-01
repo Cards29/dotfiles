@@ -39,6 +39,13 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+opt.undofile = true
+opt.conceallevel = 0
+opt.showtabline = 0
+opt.statusline = "%f %r %m%="
+opt.winborder = "rounded"
+opt.laststatus = 3
+
 -- Fix for vim-tmux-navigator / netrw <C-l> conflict
 vim.g.tmux_navigator_disable_netrw_workaround = 1
 
@@ -74,9 +81,27 @@ vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
 	end,
 })
 
-opt.undofile = true
-opt.conceallevel = 0
-opt.showtabline = 0
-opt.statusline = "%f %r %m%="
-opt.winborder = "rounded"
-opt.laststatus = 3
+-- Restore cursor to last known position when reopening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(event)
+		local buf = event.buf
+		if vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) or vim.b[buf].last_loc then
+			return
+		end
+		vim.b[buf].last_loc = true
+		local mark = vim.api.nvim_buf_get_mark(buf, '"')
+		local lcount = vim.api.nvim_buf_line_count(buf)
+		if mark[1] > 0 and mark[1] <= lcount then
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+})
+
+-- Equalize splits when the terminal window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		local current_tab = vim.fn.tabpagenr()
+		vim.cmd("tabdo wincmd =")
+		vim.cmd("tabnext " .. current_tab)
+	end,
+})
