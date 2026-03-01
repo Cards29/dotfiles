@@ -1,9 +1,10 @@
-# system + uv
+# system 
 yay -Syu
 echo ""
 
 # rust
-cargo install-update -a
+rustup update          # Update the compiler and toolchain first
+cargo install-update -a # Then update the tools using the new compiler
 echo ""
 
 # js tools (user-owned)
@@ -11,8 +12,6 @@ npm update -g
 echo ""
 
 # python CLIs
-pipx upgrade-all
-echo ""
 uv tool upgrade --all
 echo ""
 
