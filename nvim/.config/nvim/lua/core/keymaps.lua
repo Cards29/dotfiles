@@ -50,7 +50,7 @@ keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 keymap.set("n", "<Esc>", "<Esc>:nohl<CR>", { desc = "Clear search highlights" })
 
-keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
+keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
 -- add here
 
@@ -64,12 +64,12 @@ keymap.set("n", "<leader>cc", function()
 	end
 end, { desc = "Save Current Colorscheme" })
 
-keymap.set("n", "<leader>mp", function()
-	local scene_name = vim.fn.expand("<cword>")
-	local file_name = vim.fn.expand("%")
-
-	vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
-end, { desc = "Run Manim on class under cursor" })
+-- keymap.set("n", "<leader>mp", function()
+-- 	local scene_name = vim.fn.expand("<cword>")
+-- 	local file_name = vim.fn.expand("%")
+--
+-- 	vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
+-- end, { desc = "Run Manim on class under cursor" })
 
 keymap.set("n", "<leader>e", "<cmd>Vex<CR>", { desc = "Open Netrw" })
 
