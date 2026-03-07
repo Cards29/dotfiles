@@ -52,6 +52,17 @@ return {
 							removed = " ",
 						},
 					},
+					{
+						require("noice").api.status.mode.get,
+						cond = require("noice").api.status.mode.has,
+						color = { color = "#ff9e64" }, -- Optional: pick a standout color
+					},
+					{
+						require("noice").api.status.command.get,
+						cond = require("noice").api.status.command.has,
+						color = { fg = "#7aa2f7" }, -- Blue-ish color to distinguish from macros
+					},
+					--
 				},
 				lualine_y = {
 					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
