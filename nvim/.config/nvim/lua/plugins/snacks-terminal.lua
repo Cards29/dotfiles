@@ -15,14 +15,21 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"<leader>tf",
+			"<leader>tt",
 			function()
 				Snacks.terminal.toggle()
+			end,
+			desc = "Toggle Terminal",
+		},
+		{
+			"<leader>tf",
+			function()
+				Snacks.terminal.toggle(nil, { win = { position = "float" } })
 			end,
 			desc = "Toggle Terminal (Float)",
 		},
 		{
-			"<leader>tt",
+			"<leader>th",
 			function()
 				Snacks.terminal.toggle(nil, { win = { position = "bottom" } })
 			end,
