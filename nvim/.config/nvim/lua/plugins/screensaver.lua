@@ -3,7 +3,7 @@ return {
 	config = function()
 		require("screensaver").setup({
 			-- ⏱️ Time in milliseconds before the screensaver starts
-			idle_ms = 60 * 1000,
+			idle_ms = 60 * 60 * 1000,
 
 			-- 🚀 Automatically start screensaver after idle time (set to false for manual only)
 			auto_start = true,
