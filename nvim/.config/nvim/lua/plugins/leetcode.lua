@@ -7,7 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "<leader>ll", "<cmd>Leet<CR>", desc = "LeetCode Dashboard" },
+		{ "<leader>lc", "<cmd>Leet<CR>", desc = "LeetCode Dashboard" },
 		{ "<leader>lp", "<cmd>Leet list<CR>", desc = "LeetCode Problem List" },
 		{ "<leader>lr", "<cmd>Leet run<CR>", desc = "LeetCode Run" },
 		{ "<leader>ls", "<cmd>Leet submit<CR>", desc = "LeetCode Submit" },
