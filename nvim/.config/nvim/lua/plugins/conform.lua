@@ -20,6 +20,7 @@ return {
 				liquid = { "prettier" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
+				rust = { "rustfmt" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 			},
