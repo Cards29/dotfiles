@@ -3,7 +3,7 @@
 )
 
 (defsrc
-  caps s d f e j u a l r w rctl
+  caps 
 )
 
 (defvar 
@@ -15,17 +15,9 @@
   ;; Caps: Tap for Esc, Hold for LCtl
   caps_esc_ctrl (tap-hold $tap-time $hold-time esc lctl)
 
-  ;; Rctl: Tap to switch to Navigation, Hold for Rctl
-  nav-switch (tap-hold $tap-time $hold-time (layer-switch navigation) rctl)
-  
-  ;; Back to Default: Put this on the Navigation layer to get back
-  def-switch (layer-switch default)
 )
 
 (deflayer default
-  @caps_esc_ctrl s d f e j u a l r w @nav-switch
+  @caps_esc_ctrl 
 )
 
-(deflayer navigation
-  @caps_esc_ctrl left down right up bspc ret home end pgup pgdn @def-switch
-)
