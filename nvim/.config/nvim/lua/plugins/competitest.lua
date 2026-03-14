@@ -7,6 +7,12 @@ return {
 	config = function()
 		require("competitest").setup({
 			-- Add your specific settings here
+			template_file = {
+				-- This looks for a file named 'template.rs' in your nvim config folder
+				rs = "~/.config/nvim/template/template.rs",
+			},
+			evaluate_template_modifiers = true,
+			received_files_extension = "rs",
 		})
 
 		local keymap = vim.keymap.set
@@ -27,4 +33,3 @@ return {
 		keymap("n", "<leader>Cd", "<cmd>CompetiTest delete_testcase<cr>", opts)
 	end,
 }
-
