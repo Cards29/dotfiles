@@ -19,9 +19,6 @@ uv pip list --format=freeze | cut -d= -f1 > ~/dotfiles/pkg-lists/uv.txt
 # === pip (system or venv) ===
 pip list --format=freeze | cut -d= -f1 > ~/dotfiles/pkg-lists/pip.txt
 
-# === pipx (global Python CLIs) ===
-pipx list --short > ~/dotfiles/pkg-lists/pipx.txt
-
 # === Rust / cargo ===
 cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > ~/dotfiles/pkg-lists/cargo.txt
 

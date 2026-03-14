@@ -18,6 +18,7 @@ chardet
 charset-normalizer
 click
 colorama
+cpplint
 cryptography
 css-parser
 cssselect
@@ -92,6 +93,8 @@ pipx
 pkg_resources
 platformdirs
 pluggy
+protontricks
+ProtonUp-Qt
 proxy_tools
 psutil
 ptyprocess
@@ -121,6 +124,7 @@ PySide6
 pyte
 pytesseract
 python-dateutil
+python-discovery
 pytz
 pywebview
 pyxdg
