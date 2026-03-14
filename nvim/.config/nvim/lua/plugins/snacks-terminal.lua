@@ -24,21 +24,21 @@ return {
 		{
 			"<leader>tf",
 			function()
-				Snacks.terminal.toggle(nil, { win = { position = "float" } })
+				Snacks.terminal.open(nil, { win = { position = "float" } })
 			end,
 			desc = "Toggle Terminal (Float)",
 		},
 		{
 			"<leader>th",
 			function()
-				Snacks.terminal.toggle(nil, { win = { position = "bottom" } })
+				Snacks.terminal.open(nil, { win = { position = "bottom" } })
 			end,
 			desc = "Toggle Terminal (Bottom Split)",
 		},
 		{
 			"<leader>tv",
 			function()
-				Snacks.terminal.toggle(nil, { win = { position = "right" } })
+				Snacks.terminal.open(nil, { win = { position = "right" } })
 			end,
 			desc = "Toggle Terminal (Right Split)",
 		},
