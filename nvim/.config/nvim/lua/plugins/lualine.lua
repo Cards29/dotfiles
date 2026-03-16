@@ -44,14 +44,14 @@ return {
 						end,
 						color = { fg = "#ff9e64" },
 					},
-					{
-						"diff",
-						symbols = {
-							added = " ",
-							modified = " ",
-							removed = " ",
-						},
-					},
+					-- {
+					-- 	"diff",
+					-- 	symbols = {
+					-- 		added = " ",
+					-- 		modified = " ",
+					-- 		removed = " ",
+					-- 	},
+					-- },
 					{
 						require("noice").api.status.mode.get,
 						cond = require("noice").api.status.mode.has,
