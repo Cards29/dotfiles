@@ -96,6 +96,7 @@ export PGDATABASE='postgres'
 # Path exports
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 
 # Shell integration
