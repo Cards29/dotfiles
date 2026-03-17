@@ -15,7 +15,6 @@ echo ""
 
 # --- Go Ecosystem ---
 echo "--- Updating Go Binaries (Shadow, etc.) ---"
-go install github.com/Gelio/go-global-update@latest
 go-global-update
 echo ""
 
