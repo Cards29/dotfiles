@@ -14,9 +14,22 @@ keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force quit" })
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
-keymap.set("n", "<leader>sm", "<C-w>| <C-w>_", { desc = "Maximize current split" })
+keymap.set("n", "<leader>sm", function()
+	local current_win = vim.api.nvim_get_current_win()
+	local is_max_h = vim.api.nvim_win_get_height(current_win) >= (vim.o.lines - 3)
+	local is_max_w = vim.api.nvim_win_get_width(current_win) >= (vim.o.columns - 2)
+
+	if is_max_h and is_max_w then
+		vim.cmd("wincmd =")
+	else
+		vim.cmd("wincmd |")
+		vim.cmd("wincmd _")
+	end
+end, { desc = "Toggle maximize current split" })
+
+-- <leader>se is now free!
+-- You can now safely use it for Scissors or any other mapping.
 
 keymap.set("n", "<leader>=", "<cmd>vertical resize +2<CR>", { desc = "Increase width" })
 keymap.set("n", "<leader>-", "<cmd>vertical resize -2<CR>", { desc = "Decrease width" })
