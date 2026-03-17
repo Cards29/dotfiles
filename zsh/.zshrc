@@ -70,6 +70,8 @@ alias UPDATE="bash ~/dotfiles/scripts/update.sh"
 alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
 alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
 alias KANATA_STOP="systemctl --user stop kanata.service"
+alias bentopdf="docker run -d --name bentopdf -p 3000:8080 --rm bentopdfteam/bentopdf:latest && xdg-open http://localhost:3000"
+alias stop-bentopdf="docker stop bentopdf"
 
 # Suffix alias
 alias -s json=jless
