@@ -21,21 +21,15 @@ return {
 		end,
 	},
 
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = default_colorscheme ~= "catppuccin",
-	},
+	{ "catppuccin/nvim", name = "catppuccin", lazy = default_colorscheme ~= "catppuccin" },
 	{ "folke/tokyonight.nvim", lazy = default_colorscheme ~= "tokyonight" },
 	{ "rebelot/kanagawa.nvim", lazy = default_colorscheme ~= "kanagawa" },
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = default_colorscheme ~= "rose-pine",
-	},
+	{ "rose-pine/neovim", name = "rose-pine", lazy = default_colorscheme ~= "rose-pine" },
 	{ "kaicataldo/material.vim", lazy = default_colorscheme ~= "material" },
 	{ "oskarnurm/koda.nvim", lazy = default_colorscheme ~= "koda" },
 	{ "mrpbennett/boo-berry.nvim", lazy = default_colorscheme ~= "boo-berry" },
+	{ "WTFox/jellybeans.nvim", lazy = default_colorscheme ~= "jellybeans" },
+	{ "webhooked/kanso.nvim", lazy = false, priority = 1000 },
 
 	{
 		-- applies the default colorscheme after the chosen plugin's config runs
