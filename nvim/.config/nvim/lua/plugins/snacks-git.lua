@@ -48,13 +48,13 @@ return {
 			end,
 			desc = "Git Status",
 		},
-		{
-			"<leader>gd",
-			function()
-				Snacks.picker.git_diff()
-			end,
-			desc = "Git Diff",
-		},
+		-- {
+		-- 	"<leader>gd",
+		-- 	function()
+		-- 		Snacks.picker.git_diff()
+		-- 	end,
+		-- 	desc = "Git Diff",
+		-- },
 		{
 			"<leader>gl",
 			function()
@@ -71,34 +71,34 @@ return {
 		},
 
 		-- --- 4. BLAME & BRANCHES ---
+		-- {
+		-- 	"<leader>gb",
+		-- 	function()
+		-- 		Snacks.git.blame_line()
+		-- 	end,
+		-- 	desc = "Git Blame (Floating)",
+		-- },
+		-- {
+		-- 	"<leader>gB",
+		-- 	function()
+		-- 		Snacks.picker.git_log_line()
+		-- 	end,
+		-- 	desc = "Git Blame Line History",
+		-- },
 		{
 			"<leader>gb",
-			function()
-				Snacks.git.blame_line()
-			end,
-			desc = "Git Blame (Floating)",
-		},
-		{
-			"<leader>gB",
-			function()
-				Snacks.picker.git_log_line()
-			end,
-			desc = "Git Blame Line History",
-		},
-		{
-			"<leader>gc",
 			function()
 				Snacks.picker.git_branches()
 			end,
 			desc = "Git Branches (Checkout)",
 		},
-		{
-			"<leader>gS",
-			function()
-				Snacks.picker.git_stash()
-			end,
-			desc = "Git Stash",
-		},
+		-- {
+		-- 	"<leader>gS",
+		-- 	function()
+		-- 		Snacks.picker.git_stash()
+		-- 	end,
+		-- 	desc = "Git Stash",
+		-- },
 
 		-- --- 5. REMOTE & GITHUB ---
 		{
@@ -119,7 +119,7 @@ return {
 					notify = false,
 				})
 			end,
-			desc = "Git Copy URL",
+			desc = "Copy GitHub URL",
 			mode = { "n", "v" },
 		},
 		{
