@@ -105,3 +105,47 @@ vim.api.nvim_create_autocmd("VimResized", {
 		vim.cmd("tabnext " .. current_tab)
 	end,
 })
+
+-- Color for git blame message
+-- Helper to lighten a hex color
+local function lighten_color(hex, percentage)
+	local r = tonumber(hex:sub(2, 3), 16)
+	local g = tonumber(hex:sub(4, 5), 16)
+	local b = tonumber(hex:sub(6, 7), 16)
+
+	r = math.min(255, math.floor(r + (255 - r) * percentage))
+	g = math.min(255, math.floor(g + (255 - g) * percentage))
+	b = math.min(255, math.floor(b + (255 - b) * percentage))
+
+	return string.format("#%02x%02x%02x", r, g, b)
+end
+
+local function sync_git_blame_hl()
+	-- 1. Grab current theme colors
+	local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+	local comment = vim.api.nvim_get_hl(0, { name = "Comment" })
+
+	-- 2. Convert Decimal colors to Hex
+	local bg_hex = string.format("#%06x", normal.bg or 0x1f1f28)
+	local fg_hex = string.format("#%06x", comment.fg or 0x727169)
+
+	-- 3. Create a background that is 10% brighter than the theme background
+	local dynamic_bg = lighten_color(bg_hex, 0.15)
+	local dynamic_fg = lighten_color(fg_hex, 0.35)
+
+	-- 4. Apply the new highlight
+	vim.api.nvim_set_hl(0, "GitBlameMsg", {
+		fg = dynamic_fg,
+		bg = dynamic_bg,
+		italic = true,
+	})
+end
+
+-- Run on startup and whenever you switch themes
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = sync_git_blame_hl,
+})
+
+-- Initial run
+sync_git_blame_hl()
