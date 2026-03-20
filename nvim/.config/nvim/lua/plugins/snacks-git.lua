@@ -71,34 +71,13 @@ return {
 		},
 
 		-- --- 4. BLAME & BRANCHES ---
-		-- {
-		-- 	"<leader>gb",
-		-- 	function()
-		-- 		Snacks.git.blame_line()
-		-- 	end,
-		-- 	desc = "Git Blame (Floating)",
-		-- },
-		-- {
-		-- 	"<leader>gB",
-		-- 	function()
-		-- 		Snacks.picker.git_log_line()
-		-- 	end,
-		-- 	desc = "Git Blame Line History",
-		-- },
 		{
-			"<leader>gb",
+			"<leader>gB",
 			function()
 				Snacks.picker.git_branches()
 			end,
 			desc = "Git Branches (Checkout)",
 		},
-		-- {
-		-- 	"<leader>gS",
-		-- 	function()
-		-- 		Snacks.picker.git_stash()
-		-- 	end,
-		-- 	desc = "Git Stash",
-		-- },
 
 		-- --- 5. REMOTE & GITHUB ---
 		{
