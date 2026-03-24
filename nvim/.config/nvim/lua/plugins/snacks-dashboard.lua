@@ -10,7 +10,12 @@ return {
 			},
 			preset = {
 				keys = {
-					{ icon = "", key = "f", desc = "Find File", action = ":lua require('neural-open').open()" },
+					{
+						icon = "",
+						key = "f",
+						desc = "Find File",
+						action = ":lua Snacks.dashboard.pick('find_files')",
+					},
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" }, --   = new file / document
 					{
 						icon = " ",
