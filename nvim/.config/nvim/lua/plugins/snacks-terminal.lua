@@ -2,7 +2,7 @@ return {
 	"folke/snacks.nvim",
 	opts = {
 		-- --- Terminal ---
-		terminal = { enabled = true }, -- Snacks terminal
+		terminal = { enabled = false }, -- Snacks terminal
 	},
 	keys = {
 		-- --- TERMINAL ---
