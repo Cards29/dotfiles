@@ -187,6 +187,7 @@ overview {
 }
 // Add lines like this to spawn processes at startup.
 
+spawn-at-startup "brave" "--new-window" "about:blank"
 spawn-at-startup "dms" "ipc" "call" "welcome" "open"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
@@ -195,12 +196,9 @@ spawn-at-startup "dms" "ipc" "call" "welcome" "open"
 // This line starts waybar, a commonly used bar for Wayland compositors.
 environment {
   XDG_CURRENT_DESKTOP "niri"
-  QT_QPA_PLATFORMTHEME "gtk3"
-  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
-  DMS_HIDE_TRAYIDS "nm-applet,network-manager-applet"
 }
 hotkey-overlay {
-    // skip-at-startup
+    skip-at-startup
 }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -328,5 +326,3 @@ include "dms/alttab.kdl"
 include "dms/binds.kdl"
 include "dms/outputs.kdl"
 include "dms/cursor.kdl"
-
-include "dms/windowrules.kdl"
