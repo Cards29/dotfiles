@@ -18,12 +18,6 @@ return {
 					},
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" }, --   = new file / document
 					{
-						icon = " ",
-						key = "g",
-						desc = "Find Text",
-						action = ":lua Snacks.dashboard.pick('live_grep')",
-					}, --   = text / grep
-					{
 						icon = " ",
 						key = "c",
 						desc = "Config",
