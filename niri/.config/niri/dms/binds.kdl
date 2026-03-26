@@ -9,7 +9,7 @@ binds {
         spawn "dms" "ipc" "call" "keybinds" "toggle" "niri";
     }
 
-    Mod+A hotkey-overlay-title="Toggle Bar" {
+    Mod+Shift+B hotkey-overlay-title="Toggle Bar" {
         spawn "dms" "ipc" "call" "bar" "toggle" "index" "0";
     }
 
@@ -39,6 +39,10 @@ binds {
 
     Mod+Shift+N hotkey-overlay-title="Notepad" { 
         spawn "dms" "ipc" "call" "notepad" "toggle"; 
+    }
+
+    Mod+A hotkey-overlay-title="Toggle AI Assistant" {
+        spawn "dms" "ipc" "call" "plugins" "toggle" "aiAssistant";
     }
 
     // ========================================================================
