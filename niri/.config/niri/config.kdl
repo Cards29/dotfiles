@@ -187,7 +187,8 @@ overview {
 }
 // Add lines like this to spawn processes at startup.
 
-spawn-at-startup "dms" "ipc" "call" "welcome" "open"
+spawn-at-startup "dms" "ipc" "call" "welcome" "doctor"
+spawn-at-startup "brave" "--no-startup-window"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -200,7 +201,7 @@ environment {
   DMS_HIDE_TRAYIDS "nm-applet,network-manager-applet"
 }
 hotkey-overlay {
-    // skip-at-startup
+    skip-at-startup
 }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

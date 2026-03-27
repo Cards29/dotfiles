@@ -22,7 +22,7 @@ binds {
     // ========================================================================
 
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
-    Mod+T      hotkey-overlay-title="Terminal" { spawn "kitty"; }
+    Mod+T      hotkey-overlay-title="Retro Terminal" { spawn "cool-retro-term"; }
     Mod+B      hotkey-overlay-title="Browser"  { spawn "brave"; }
 
     Mod+Space hotkey-overlay-title="Launcher" {
