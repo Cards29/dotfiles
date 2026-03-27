@@ -1,30 +1,71 @@
-# ================================
-# ⚡ INSTANT STARTUP CORE
-# ================================
+# Set the directory for zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Unique PATH (fast, no duplicates)
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" 
+fi
+
+# Source the zinit file
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Path
 typeset -U path
 path=(
-  "$HOME/.local/bin"
-  "$HOME/.cargo/bin"
-  "$HOME/go/bin"
+  $HOME/.cargo/bin
+  $HOME/.npm-global/bin
+  $HOME/go/bin
   $path
 )
 
-# Basic variables used early
-export EDITOR="nvim"
+# Add plugins
+
+# Critcal plugins that should load immediately
+# Add plugins with Turbo mode (loads after prompt → much faster startup)
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+    blockf \
+    atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+    Aloxaf/fzf-tab \
+    # zsh-users/zsh-syntax-highlighting
+
+# Add in snippets
+zinit snippet OMZP::command-not-found
+
+# Load completions
+# autoload -U compinit && compinit
+
+# Optimized compinit - only check/rebuild cache once a day
+autoload -Uz compinit
+zinit wait lucid for \
+    atinit"zicompinit; zicdreplay" \
+    zsh-users/zsh-completions 
+
+# Variables
 EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
 
-# ================================
-# ⚡ ZSH OPTIONS & HISTORY
-# ================================
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey ' ' magic-space
+bindkey -s '^xgm' 'git commit -m ""\C-b'
+bindkey -s '^xgs' 'git status'
+bindkey -s '^xga' 'git add'
 
-# History settings
+# Open buffer line in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -33,41 +74,16 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# ================================
-# ⚡ COMPLETION
-# ================================
-
-# Completion styles
+# Completing style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-
-# fzf-tab previews (requires fzf-tab to be loaded later or via defer if needed)
 zstyle ':fzf-tab:complete:cd:*' fzf-preview "$EZA_COMMAND --tree --level=2 \$realpath"
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level=2 \$realpath"
 
-# Load zsh-defer for async loading
-if [[ ! -d ~/.zsh/zsh-defer ]]; then
-  mkdir -p ~/.zsh
-  git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer
-fi
-source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
-
-# compinit (optimized: skip if dump is recent)
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-  compinit -C
-else
-  compinit
-fi
-
-# ================================
-# ⚡ ALIASES & EXPORTS (cheap)
-# ================================
-
+# Aliases
 alias ls="$EZA_COMMAND"
 alias v="nvim"
-alias grep="rg"
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
 alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
 alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
@@ -77,7 +93,8 @@ alias stop_bentopdf="docker stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
 
-# Suffix aliases
+
+# Suffix alias
 alias -s json=jless
 alias -s md=bat
 alias -s go='$EDITOR'
@@ -90,23 +107,30 @@ alias -s py='$EDITOR'
 alias -s js='$EDITOR'
 alias -s ts='$EDITOR'
 
-# Other exports
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# My Exports
+export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
-export BAT_THEME=tokyonight_night
 
-# # ================================
-# # ⚡ fzf CONFIGURATION (must be before eval fzf --zsh)
-# # ================================
+
+# -------------------fzf------------------------------
+# -- Use fd instead of find in fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
 }
 
+# Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
@@ -116,43 +140,28 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
 _fzf_comprun() {
   local command=$1
   shift
+
   case "$command" in
     cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'" "$@" ;;
-    ssh)          fzf --preview 'dig {}' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
 
-# ================================
-# ⚡ KEYBINDS
-# ================================
+# ----- Bat (better cat) -----
+export BAT_THEME=tokyonight_night
 
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey ' ' magic-space
 
-# Git quick binds
-bindkey -s '^xgm' 'git commit -m ""\C-b'
-bindkey -s '^xgs' 'git status'
-bindkey -s '^xga' 'git add'
+# ----------------------------------------------------
 
-# Edit command in editor
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
-
-# ================================
-# ⚡ FUNCTIONS & WIDGETS
-# ================================
-
-# Reduce paste redraw lag
-zle_highlight+=(paste:none)
-
+# Custom widgets
 # Clear screen but keep current command buffer
 function clear-screen-and-scrollback() {
   echoti civis > /dev/tty
@@ -163,39 +172,72 @@ function clear-screen-and-scrollback() {
 zle -N clear-screen-and-scrollback
 bindkey '^xl' clear-screen-and-scrollback  # Ctrl+X then L
 
-# Copy current buffer to clipboard (Wayland)
-function copy-buffer-to-clipboard() {
-  print -rn -- "$BUFFER" | wl-copy
-  zle -M "Copied to clipboard"
+# Copy current command buffer to clipboard (Wayland)
+copy-buffer-to-clipboard() {
+    local copy_cmd
+
+    if [[ "$OSTYPE" == darwin* ]]; then
+        # macOS
+        copy_cmd="pbcopy"
+    elif [[ -n "$WAYLAND_DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
+        # Wayland (your current setup)
+        copy_cmd="wl-copy"
+    elif command -v xclip >/dev/null 2>&1; then
+        # X11 with xclip (fallback, most reliable)
+        copy_cmd="xclip -selection clipboard"
+    elif command -v xsel >/dev/null 2>&1; then
+        # X11 with xsel (alternative fallback)
+        copy_cmd="xsel --clipboard --input"
+    else
+        zle -M "No clipboard tool found (install wl-copy, xclip, or xsel)"
+        return 1
+    fi
+
+    print -rn -- "$BUFFER" | eval "$copy_cmd"
+    zle -M "Copied to clipboard"
 }
 zle -N copy-buffer-to-clipboard
 bindkey '^xc' copy-buffer-to-clipboard  # Ctrl+X then C
 
-# Yazi file manager wrapper (changes directory on exit)
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
-  IFS= read -r -d '' cwd < "$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-  rm -f -- "$tmp"
+fuck() {
+  unset -f fuck
+  eval "$(thefuck --alias)"
+  fuck "$@"
 }
 
-# ================================
-# 🚀 FINAL TOUCH (synchronous)
-# ================================
+fk() {
+  unset -f fk
+  eval "$(thefuck --alias fk)"
+  fk "$@"
+}
 
-# Prompt, directory jumper, fuzzy finder
+# Zinit update
+zupdate() {
+    echo "🔄 Updating Zinit itself..."
+    zinit self-update
+    echo "🔄 Updating all plugins and snippets..."
+    zinit update --all
+    echo "✅ Done! Restart your terminal or run: source ~/.zshrc"
+}
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+
+# Heavy evals at the bottom
+# Oh my posh prompt theme
+# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.toml)"
+
+# Shell integration
 eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
-# ================================
-# 🚀 DEFERRED (non-blocking / heavy plugins)
-# ================================
 
-# These load after the prompt appears for instant feel
-zsh-defer source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-zsh-defer source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Optional: your custom fzf config if it exists
-zsh-defer '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
