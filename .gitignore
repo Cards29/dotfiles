@@ -8,3 +8,4 @@ AGENTS.md
 /kitty/.config/kitty/dank-theme.conf
 /niri/.config/niri/dms/colors.kdl
 /nvim/.config/nvim/lua/plugins/dankcolors.lua
+/niri/.config/niri/dms/outputs.kdl
