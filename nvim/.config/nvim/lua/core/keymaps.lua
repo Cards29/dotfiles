@@ -4,6 +4,8 @@ vim.g.maplocalleader = " "
 local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("n", "j", "gj", { desc = "Visual down" })
+keymap.set("n", "k", "gk", { desc = "Visual up" })
 
 keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
