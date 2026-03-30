@@ -29,7 +29,8 @@ return {
 	{ "oskarnurm/koda.nvim", lazy = default_colorscheme ~= "koda" },
 	{ "mrpbennett/boo-berry.nvim", lazy = default_colorscheme ~= "boo-berry" },
 	{ "WTFox/jellybeans.nvim", lazy = default_colorscheme ~= "jellybeans" },
-	{ "webhooked/kanso.nvim", lazy = false, priority = 1000 },
+	{ "webhooked/kanso.nvim", lazy = default_colorscheme ~= "kanso" },
+	{ "0x-ximon/acario.nvim", lazy = default_colorscheme ~= "acario" },
 
 	{
 		-- applies the default colorscheme after the chosen plugin's config runs
