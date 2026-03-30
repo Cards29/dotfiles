@@ -119,7 +119,7 @@ binds {
     Mod+F4  allow-when-locked=true hotkey-overlay-title="Brightness Down" { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
     Mod+F5  allow-when-locked=true hotkey-overlay-title="Brightness Up"   { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
     Mod+F6  allow-when-locked=true hotkey-overlay-title="Media: Previous" { spawn "dms" "ipc" "call" "mpris" "previous"; }
-    Mod+F7  allow-when-locked=true hotkey-overlay-title="Media: Play/Pause"{ spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    Mod+F7  allow-when-locked=true hotkey-overlay-title="Media: Play/Pause" { spawn "dms" "ipc" "call" "mpris" "playPause"; }
     Mod+F8  allow-when-locked=true hotkey-overlay-title="Media: Next"     { spawn "dms" "ipc" "call" "mpris" "next"; }
     Mod+F10 allow-when-locked=true hotkey-overlay-title="Mute Mic"        { spawn "dms" "ipc" "call" "audio" "micmute"; }
 
