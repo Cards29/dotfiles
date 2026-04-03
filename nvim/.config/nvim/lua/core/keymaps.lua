@@ -11,7 +11,7 @@ keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank characte
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
 keymap.set("n", "<leader>w", ":wa<CR>", { desc = "Write all" })
-keymap.set("n", "<leader>q", ":q<CR>", { desc = "Write & quit all" })
+keymap.set("n", "<leader>q", "<cmd>wq<CR>", { desc = "Write & quit" })
 keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force quit" })
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
@@ -87,7 +87,14 @@ end, { desc = "Save Current Colorscheme" })
 -- 	vim.cmd(string.format("split | term manim -pqh %s %s", file_name, scene_name))
 -- end, { desc = "Run Manim on class under cursor" })
 
-keymap.set("n", "<leader>e", "<cmd>Vex<CR>", { desc = "Open Netrw" })
+keymap.set("n", "<leader>uh", function()
+	local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+	vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
+end, { desc = "Toggle inlay hints" })
+
+keymap.set("n", "<leader>uw", function()
+	vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle Wrap" })
 
 keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable Up arrow" })
 keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable Down arrow" })

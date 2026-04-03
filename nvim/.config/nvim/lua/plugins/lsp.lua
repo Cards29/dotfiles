@@ -23,22 +23,40 @@ return {
 
 			-- 2. Setup Mason LSP Config
 			local servers = {
-				"ts_ls",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"svelte",
-				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"pyright",
-				"eslint",
-				"clangd",
+				-- Web/JS/TS
+				ts_ls = {},
+				html = {},
+				cssls = {},
+				tailwindcss = {},
+				svelte = {},
+				graphql = {},
+				emmet_ls = {},
+				prismals = {},
+
+				-- Python
+				pyright = {},
+
+				-- C/C++
+				clangd = {},
+
+				-- Rust
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+							procMacro = {
+								enable = true,
+							},
+						},
+					},
+				},
 			}
 
+			-- 5. Setup mason-lspconfig (only for installation)
 			require("mason-lspconfig").setup({
-				ensure_installed = servers,
+				ensure_installed = vim.tbl_keys(servers),
 				automatic_installation = true,
 			})
 
@@ -54,34 +72,32 @@ return {
 			-- 4. Modern Neovim 0.11+ Server Setup with Blink
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			for _, server in ipairs(servers) do
-				-- Use the new native API to avoid the lspconfig framework deprecation
-				vim.lsp.config(server, {
-					capabilities = capabilities,
-				})
-				-- Actually enable the server
-				vim.lsp.enable(server)
-			end
+			for name, opts in pairs(servers) do
+				vim.lsp.config(
+					name,
+					vim.tbl_deep_extend("force", {
+						capabilities = capabilities,
+					}, opts)
+				)
 
-			-- ADD THIS HERE for Rust (since it's not in the 'servers' list)
-			vim.lsp.config("rust_analyzer", {
-				capabilities = capabilities,
-				settings = {
-					["rust-analyzer"] = {
-						checkOnSave = {
-							command = "clippy", -- Better linting than standard 'check'
-						},
-						procMacro = {
-							enable = true,
-						},
-					},
-				},
-			})
-			vim.lsp.enable("rust_analyzer")
+				vim.lsp.enable(name)
+			end
 
 			-- 5. Diagnostic Config
 			vim.diagnostic.config({
-				virtual_text = true,
+				virtual_text = {
+					prefix = "●",
+					spacing = 2,
+				},
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+				float = {
+					border = "rounded",
+					source = "if_many",
+					header = "",
+					prefix = "",
+				},
 				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = " ",
@@ -96,67 +112,44 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
-					local opts = { buffer = ev.buf, silent = true }
+					-- enable inlay hints automatically
+					vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
 
-					opts.desc = "Show LSP references"
-					vim.keymap.set("n", "gR", function()
-						Snacks.picker.lsp_references()
-					end, opts)
+					local map = function(mode, lhs, rhs, desc)
+						vim.keymap.set(mode, lhs, rhs, {
+							buffer = ev.buf,
+							silent = true,
+							desc = desc,
+						})
+					end
 
-					opts.desc = "Show LSP definitions"
-					vim.keymap.set("n", "gd", function()
-						Snacks.picker.lsp_definitions()
-					end, opts)
+					-- Navigation
+					map("n", "gd", Snacks.picker.lsp_definitions, "Definitions")
+					map("n", "gD", Snacks.picker.lsp_declarations, "Declarations")
+					map("n", "gr", Snacks.picker.lsp_references, "References")
+					map("n", "gi", Snacks.picker.lsp_implementations, "Implementations")
+					map("n", "gt", Snacks.picker.lsp_type_definitions, "Type Definitions")
 
-					opts.desc = "Show LSP declarations"
-					vim.keymap.set("n", "gD", function()
-						Snacks.picker.lsp_declarations()
-					end, opts)
+					-- Symbols
+					map("n", "<leader>ss", Snacks.picker.lsp_symbols, "Document Symbols")
+					map("n", "<leader>sS", Snacks.picker.lsp_workspace_symbols, "Workspace Symbols")
 
-					opts.desc = "Show LSP implementations"
-					vim.keymap.set("n", "gi", function()
-						Snacks.picker.lsp_implementations()
-					end, opts)
+					-- Calls
+					map("n", "<leader>ci", Snacks.picker.lsp_incoming_calls, "Incoming Calls")
+					map("n", "<leader>co", Snacks.picker.lsp_outgoing_calls, "Outgoing Calls")
 
-					opts.desc = "Show LSP type definitions"
-					vim.keymap.set("n", "gt", function()
-						Snacks.picker.lsp_type_definitions()
-					end, opts)
+					-- Actions
+					map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
+					map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
 
-					opts.desc = "Show document symbols"
-					vim.keymap.set("n", "<leader>ss", function()
-						Snacks.picker.lsp_symbols()
-					end, opts)
+					-- Hover (with border)
+					map("n", "K", function()
+						vim.lsp.buf.hover({ border = "rounded" })
+					end, "Hover Docs")
 
-					opts.desc = "Show workspace symbols"
-					vim.keymap.set("n", "<leader>sS", function()
-						Snacks.picker.lsp_workspace_symbols()
-					end, opts)
-
-					opts.desc = "Show incoming calls"
-					vim.keymap.set("n", "<leader>ci", function()
-						Snacks.picker.lsp_incoming_calls()
-					end, opts)
-
-					opts.desc = "Show outgoing calls"
-					vim.keymap.set("n", "<leader>co", function()
-						Snacks.picker.lsp_outgoing_calls()
-					end, opts)
-
-					opts.desc = "See available code actions"
-					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
-					opts.desc = "Smart rename"
-					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-					opts.desc = "Show documentation"
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-					opts.desc = "Restart LSP"
-					vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
-
-					opts.desc = "Show LSP logs"
-					vim.keymap.set("n", "<leader>sl", "<cmd>LspLog<CR>", opts)
+					-- Utils
+					map("n", "<leader>rs", "<cmd>LspRestart<CR>", "Restart LSP")
+					map("n", "<leader>sl", "<cmd>LspLog<CR>", "LSP Log")
 				end,
 			})
 		end,

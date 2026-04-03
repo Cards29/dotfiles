@@ -1,8 +1,11 @@
 return {
 	"folke/snacks.nvim",
+	priority = 1000,
+	lazy = false,
+	dependencies = { "MaximilianLloyd/ascii.nvim", "MunifTanjim/nui.nvim" },
 	opts = {
 		dashboard = {
-			enabled = true,
+			enabled = false,
 			sections = {
 				{ section = "header" },
 				{ section = "keys", gap = 1, padding = 1 },
