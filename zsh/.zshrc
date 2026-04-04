@@ -19,30 +19,17 @@ path=(
   $path
 )
 
-# Add plugins
+### --- Plugins & Snippets --- ###
+# zinit ice compile'(pure|async).zsh'pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
+zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
-# Critcal plugins that should load immediately
-# Add plugins with Turbo mode (loads after prompt → much faster startup)
-zinit wait lucid for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
-    blockf \
-    atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions \
-    Aloxaf/fzf-tab \
-    # zsh-users/zsh-syntax-highlighting
-
-# Add in snippets
-zinit snippet OMZP::command-not-found
-
-# Load completions
-# autoload -U compinit && compinit
-
-# Optimized compinit - only check/rebuild cache once a day
-autoload -Uz compinit
-zinit wait lucid for \
-    atinit"zicompinit; zicdreplay" \
-    zsh-users/zsh-completions 
+### --- Completion Initialization --- ###
+autoload -Uz compinit && compinit
+zinit cdreplay -q
 
 # Variables
 EZA_COMMAND="eza --long --git --color=always --icons=always --no-filesize --no-time --no-user --no-permissions"
@@ -107,9 +94,6 @@ alias -s py='$EDITOR'
 alias -s js='$EDITOR'
 alias -s ts='$EDITOR'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # My Exports
 export EDITOR="nvim"
 export PGUSER='postgres'
@@ -172,29 +156,10 @@ function clear-screen-and-scrollback() {
 zle -N clear-screen-and-scrollback
 bindkey '^xl' clear-screen-and-scrollback  # Ctrl+X then L
 
-# Copy current command buffer to clipboard (Wayland)
-copy-buffer-to-clipboard() {
-    local copy_cmd
-
-    if [[ "$OSTYPE" == darwin* ]]; then
-        # macOS
-        copy_cmd="pbcopy"
-    elif [[ -n "$WAYLAND_DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
-        # Wayland (your current setup)
-        copy_cmd="wl-copy"
-    elif command -v xclip >/dev/null 2>&1; then
-        # X11 with xclip (fallback, most reliable)
-        copy_cmd="xclip -selection clipboard"
-    elif command -v xsel >/dev/null 2>&1; then
-        # X11 with xsel (alternative fallback)
-        copy_cmd="xsel --clipboard --input"
-    else
-        zle -M "No clipboard tool found (install wl-copy, xclip, or xsel)"
-        return 1
-    fi
-
-    print -rn -- "$BUFFER" | eval "$copy_cmd"
-    zle -M "Copied to clipboard"
+# Copy current buffer to clipboard (Wayland)
+function copy-buffer-to-clipboard() {
+  print -rn -- "$BUFFER" | wl-copy
+  zle -M "Copied to clipboard"
 }
 zle -N copy-buffer-to-clipboard
 bindkey '^xc' copy-buffer-to-clipboard  # Ctrl+X then C
@@ -229,10 +194,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-
-# Heavy evals at the bottom
-# Oh my posh prompt theme
-# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.toml)"
 
 # Shell integration
 eval "$(starship init zsh)"
