@@ -10,9 +10,9 @@ keymap.set("n", "k", "gk", { desc = "Visual up" })
 keymap.set({ "n", "v", "o" }, "H", "^", { desc = "Go to first non-blank character" })
 keymap.set({ "n", "v", "o" }, "L", "$", { desc = "Go to end of line" })
 
-keymap.set("n", "<leader>w", ":wa<CR>", { desc = "Write all" })
-keymap.set("n", "<leader>q", "<cmd>wq<CR>", { desc = "Write & quit" })
-keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force quit" })
+keymap.set("n", "<leader>w", "<cmd>wa<CR>", { desc = "Write all" })
+keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Write & quit" })
+keymap.set("n", "<leader>Q", "<cmd>q!<CR>", { desc = "Force quit" })
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
