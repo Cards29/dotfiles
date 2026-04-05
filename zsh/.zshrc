@@ -79,6 +79,7 @@ alias bentopdf="docker run -d --name bentopdf -p 3000:8080 --rm bentopdfteam/ben
 alias stop_bentopdf="docker stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
+alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 
 
 # Suffix alias
