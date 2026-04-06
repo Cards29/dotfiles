@@ -4,6 +4,8 @@ local opt = vim.opt
 
 opt.relativenumber = true
 opt.number = true
+opt.updatetime = 50
+opt.fcs = "eob: "
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
@@ -149,3 +151,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- Initial run
 sync_git_blame_hl()
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1a1a1a" })

@@ -165,7 +165,7 @@ return {
 			desc = "Zoxide search",
 		},
 		{
-			"?",
+			"<leader>fk",
 			function()
 				Snacks.picker.keymaps()
 			end,
