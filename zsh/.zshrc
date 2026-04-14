@@ -14,7 +14,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 typeset -U path
 path=(
   $HOME/.cargo/bin
-  $HOME/.npm-global/bin
   $HOME/go/bin
   $path
 )
@@ -71,8 +70,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 # Aliases
 alias ls="$EZA_COMMAND"
 alias v="nvim"
-alias UPDATE="bash ~/dotfiles/scripts/update.sh"
-alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
+# alias UPDATE="bash ~/dotfiles/scripts/update.sh"
+# alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
 alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
 alias KANATA_STOP="systemctl --user stop kanata.service"
 alias bentopdf="docker run -d --name bentopdf -p 3000:8080 --rm bentopdfteam/bentopdf:latest && xdg-open http://localhost:3000"
@@ -80,6 +79,8 @@ alias stop_bentopdf="docker stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
 alias arifin="uv run ~/Desktop/telegram-msg/main.py"
+alias surge="Surge"
+alias lg="lazygit"
 
 
 # Suffix alias
@@ -165,17 +166,17 @@ function copy-buffer-to-clipboard() {
 zle -N copy-buffer-to-clipboard
 bindkey '^xc' copy-buffer-to-clipboard  # Ctrl+X then C
 
-fuck() {
-  unset -f fuck
-  eval "$(thefuck --alias)"
-  fuck "$@"
-}
-
-fk() {
-  unset -f fk
-  eval "$(thefuck --alias fk)"
-  fk "$@"
-}
+# fuck() {
+#   unset -f fuck
+#   eval "$(thefuck --alias)"
+#   fuck "$@"
+# }
+#
+# fk() {
+#   unset -f fk
+#   eval "$(thefuck --alias fk)"
+#   fk "$@"
+# }
 
 # Zinit update
 zupdate() {
