@@ -90,7 +90,7 @@ return {
 			desc = "All files (hidden + ignored)",
 		},
 		{
-			"<leader>E",
+			"<leader>e",
 			function()
 				Snacks.explorer()
 			end,
