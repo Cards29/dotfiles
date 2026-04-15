@@ -58,7 +58,7 @@ binds {
     }
 
     Mod+W hotkey-overlay-title="Wallpapers" {
-       spawn "dms" "ipc" "wallpaperCarousel" "toggle"; 
+       spawn "dms" "ipc" "call" "dankdash" "wallpaper";
     }
 
     Mod+D hotkey-overlay-title="Dash Overview" {
