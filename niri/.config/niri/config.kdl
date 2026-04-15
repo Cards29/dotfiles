@@ -253,6 +253,7 @@ window-rule {
 }
 window-rule {
     match app-id="kitty"
+    match app-id="zen"
 
     background-effect {
         blur true
