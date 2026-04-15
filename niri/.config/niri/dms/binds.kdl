@@ -23,7 +23,7 @@ binds {
 
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
     Mod+T      hotkey-overlay-title="Retro Terminal" { spawn "cool-retro-term"; }
-    Mod+B      hotkey-overlay-title="Browser"  { spawn "xdg-open https://"; }
+    Mod+B      hotkey-overlay-title="Browser"  { spawn "zen"; }
 
     Mod+Space hotkey-overlay-title="Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
