@@ -60,6 +60,9 @@ input {
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
+
+
+            options "caps:ctrl_modifier"
         }
 
         // Enable numlock on startup, omitting this setting disables it.
@@ -188,7 +191,6 @@ overview {
 // Add lines like this to spawn processes at startup.
 
 spawn-at-startup "dms" "ipc" "call" "welcome" "doctor"
-spawn-at-startup "brave" "--no-startup-window"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -327,6 +329,5 @@ include "dms/colors.kdl"
 include "dms/layout.kdl"
 include "dms/alttab.kdl"
 include "dms/binds.kdl"
-include "dms/outputs.kdl"
 include "dms/cursor.kdl"
 include "dms/windowrules.kdl"
