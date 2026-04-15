@@ -9,3 +9,4 @@ AGENTS.md
 /niri/.config/niri/dms/colors.kdl
 /nvim/.config/nvim/lua/plugins/dankcolors.lua
 /niri/.config/niri/dms/outputs.kdl
+/niri/.config/niri/dms/cursor.kdl
