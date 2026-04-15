@@ -5,7 +5,7 @@ return {
 	dependencies = { "MaximilianLloyd/ascii.nvim", "MunifTanjim/nui.nvim" },
 	opts = {
 		dashboard = {
-			enabled = false,
+			enabled = true,
 			sections = {
 				{ section = "header" },
 				{ section = "keys", gap = 1, padding = 1 },

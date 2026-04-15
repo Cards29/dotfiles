@@ -4,7 +4,6 @@ local default_colorscheme = color_util.get_saved()
 return {
 	{
 		"sainnhe/everforest",
-		priority = 1000,
 		lazy = default_colorscheme ~= "everforest",
 		config = function()
 			vim.g.everforest_background = "soft"
@@ -21,10 +20,10 @@ return {
 		end,
 	},
 
-	{ "catppuccin/nvim", name = "catppuccin", lazy = default_colorscheme ~= "catppuccin" },
+	{ "catppuccin/nvim", lazy = default_colorscheme ~= "catppuccin" },
 	{ "folke/tokyonight.nvim", lazy = default_colorscheme ~= "tokyonight" },
 	{ "rebelot/kanagawa.nvim", lazy = default_colorscheme ~= "kanagawa" },
-	{ "rose-pine/neovim", name = "rose-pine", lazy = default_colorscheme ~= "rose-pine" },
+	{ "rose-pine/neovim", lazy = default_colorscheme ~= "rose-pine" },
 	{ "kaicataldo/material.vim", lazy = default_colorscheme ~= "material" },
 	{ "oskarnurm/koda.nvim", lazy = default_colorscheme ~= "koda" },
 	{ "mrpbennett/boo-berry.nvim", lazy = default_colorscheme ~= "boo-berry" },

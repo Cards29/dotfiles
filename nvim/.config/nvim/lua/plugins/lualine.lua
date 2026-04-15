@@ -11,7 +11,7 @@ return {
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
-					statusline = { "dashboard", "alpha", "starter" },
+					statusline = { "dashboard", "alpha", "starter", "snacks_dashboard", "lazyterm" },
 				},
 			},
 			sections = {
