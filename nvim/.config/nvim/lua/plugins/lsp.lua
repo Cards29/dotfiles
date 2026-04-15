@@ -1,5 +1,6 @@
 return {
 	{
+    enabled = false,
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
