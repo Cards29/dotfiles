@@ -254,6 +254,7 @@ window-rule {
 window-rule {
     match app-id="kitty"
     match app-id="zen"
+    match app-id="vesktop"
 
     background-effect {
         blur true
