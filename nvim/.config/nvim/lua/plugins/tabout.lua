@@ -3,6 +3,7 @@
 
 return {
 	"abecodes/tabout.nvim",
+	enabled = false,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
@@ -26,4 +27,3 @@ return {
 		})
 	end,
 }
-
