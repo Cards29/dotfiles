@@ -81,7 +81,9 @@ alias TDOWN="sudo tailscale down"
 alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 alias surge="Surge"
 alias lg="lazygit"
-
+chpwd() {
+    ls
+}
 
 # Suffix alias
 alias -s json=jless
