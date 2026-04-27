@@ -30,6 +30,7 @@ return {
 	{ "WTFox/jellybeans.nvim", lazy = default_colorscheme ~= "jellybeans" },
 	{ "webhooked/kanso.nvim", lazy = default_colorscheme ~= "kanso" },
 	{ "0x-ximon/acario.nvim", lazy = default_colorscheme ~= "acario" },
+	{ "ember-theme/nvim", lazy = default_colorscheme ~= "ember" },
 
 	{
 		-- applies the default colorscheme after the chosen plugin's config runs
