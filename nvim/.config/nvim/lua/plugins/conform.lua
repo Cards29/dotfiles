@@ -24,6 +24,8 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				tex = { "tex-fmt" },
+				nix = { "alejandra" },
+				["_"] = { "treefmt" }, -- the boss
 			},
 			format_on_save = {
 				lsp_fallback = true,
