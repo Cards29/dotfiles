@@ -66,7 +66,7 @@ keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 keymap.set("n", "<Esc>", "<Esc>:nohl<CR>", { desc = "Clear search highlights" })
 
-keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
+keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
 -- add here
 
