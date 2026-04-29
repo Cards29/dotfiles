@@ -25,7 +25,7 @@ return {
 				python = { "isort", "black" },
 				tex = { "tex-fmt" },
 				nix = { "alejandra" },
-				["_"] = { "treefmt" }, -- the boss
+				toml = { "taplo" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
