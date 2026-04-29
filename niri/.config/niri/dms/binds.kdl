@@ -57,11 +57,11 @@ binds {
         spawn "dms" "ipc" "call" "settings" "focusOrToggle";
     }
 
-    // Mod+W hotkey-overlay-title="Wallpapers" {
-    //    spawn "dms" "ipc" "call" "dankdash" "wallpaper";
-    // }
+    Mod+W hotkey-overlay-title="Wallpapers" {
+       spawn "dms" "ipc" "call" "dankdash" "wallpaper";
+    }
 
-    Mod+W hotkey-overlay-title="Skwd-Wall" {
+    Mod+Alt+W hotkey-overlay-title="Skwd-Wall" {
       spawn "skwd" "wall" "toggle"
     }
 
