@@ -24,7 +24,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				tex = { "tex-fmt" },
-				nix = { "alejandra" },
+				nix = { "nixfmt" },
 				toml = { "taplo" },
 			},
 			format_on_save = {
