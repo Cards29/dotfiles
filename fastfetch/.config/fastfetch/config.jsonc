@@ -1,7 +1,6 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "color": {"1": "#FFC0CB", "2": "white"},
     "padding": {
       "top": 4,
       "right": 5
@@ -18,110 +17,110 @@
 "break",
 {
   "type": "custom",
-  "format": "\u001b[38;5;246m┌────────────────────── Operating System ──────────────────────┐"
+  "format": "\u001b[34m┌────────────────────── Operating System ──────────────────────┐"
 },
 {
   "type": "os",
   "key": "󰨡 OS:",
-  "keyColor": "#FFC0CB"
+  "keyColor": "blue"
 },
 {
   "type": "kernel",
   "key": "│ Kernel:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "shell",
   "key": "│ Shell:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "terminal",
   "key": "│ Terminal:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "terminalfont",
   "key": "│ Terminal Font:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "lm",
   "key": "│ DM: 󰌾 ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "de",
   "key": "│ DE:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "wm",
   "key": "│ WM:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "wmtheme",
   "key": "│ WM Theme: 󰃣 ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "packages",
   "key": "└ Packages:  ",
-  "keyColor": "#FFC0CB"
+  "keyColor": "cyan"
 },
 {
   "type": "custom",
-  "format": "\u001b[38;5;246m├────────────────────── Device ────────────────────────────────┤"
+  "format": "\u001b[34m├────────────────────── Device ────────────────────────────────┤"
 },
 {
   "type": "host",
   "key": "󰟀 Host:",
-  "keyColor": "yellow"
+  "keyColor": "blue"
 },
 {
   "type": "bios",
   "key": "│ BIOS:  ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "memory",
   "key": "│ RAM Memory:  ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "swap",
   "key": "│ Swap: 󰾴 ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "cpu",
   "key": "│ Processor: 󰍛 ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "gpu",
   "key": "│ Videocard: 󰢮 ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "disk",
   "key": "│ Storage:  ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "battery",
   "key": "└ Battery: 󰁹 ",
-  "keyColor": "yellow"
+  "keyColor": "cyan"
 },
 {
   "type": "custom",
-  "format": "\u001b[38;5;246m├────────────────────── Other Informations─────────────────┤"
+  "format": "\u001b[34m├────────────────────── Other Informations─────────────────┤"
 },
 {
   "type": "uptime",
   "key": " Uptime:",
-  "keyColor": "cyan"
+  "keyColor": "blue"
 },
 {
    "type": "datetime",
@@ -135,7 +134,7 @@
 },
 {
   "type": "custom",
-  "format": "\u001b[38;5;246m└──────────────────────────────────────────────────────────────┘"
+  "format": "\u001b[34m└──────────────────────────────────────────────────────────────┘"
 },
 {
   "type": "colors",
