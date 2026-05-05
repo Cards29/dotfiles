@@ -80,7 +80,6 @@ alias stop_bentopdf="docker stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
 alias arifin="uv run ~/Desktop/telegram-msg/main.py"
-alias surge="Surge"
 alias lg="lazygit"
 alias arch="distrobox enter doremon"
 chpwd() {
