@@ -81,6 +81,7 @@ alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
 alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 alias lg="lazygit"
+alias f="fastfetch"
 alias arch="distrobox enter doremon"
 chpwd() {
     ls
