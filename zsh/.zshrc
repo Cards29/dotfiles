@@ -71,18 +71,18 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level
 # Aliases
 alias ls="$EZA_COMMAND"
 alias v="nvim"
-# alias UPDATE="bash ~/dotfiles/scripts/update.sh"
-# alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
+alias UPDATE="bash ~/dotfiles/scripts/update.sh"
+alias BACKUP_PKG="bash ~/dotfiles/scripts/backup-packages.sh"
 alias KANATA_RELOAD="systemctl --user daemon-reload && systemctl --user restart kanata.service"
 alias KANATA_STOP="systemctl --user stop kanata.service"
 alias bentopdf="docker run -d --name bentopdf -p 3000:8080 --rm bentopdfteam/bentopdf:latest && xdg-open http://localhost:3000"
 alias stop_bentopdf="docker stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
-alias arifin="uv run ~/Desktop/telegram-msg/main.py"
+# alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 alias lg="lazygit"
 alias f="fastfetch"
-alias arch="distrobox enter doremon"
+alias docker=podman
 chpwd() {
     ls
 }
