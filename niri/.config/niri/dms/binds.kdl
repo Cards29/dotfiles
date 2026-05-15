@@ -102,8 +102,8 @@ binds {
     // ========================================================================
 
     // Keys
-    XF86AudioRaiseVolume  allow-when-locked=true hotkey-overlay-title="Volume Up"   { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
-    XF86AudioLowerVolume  allow-when-locked=true hotkey-overlay-title="Volume Down" { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
+    XF86AudioRaiseVolume  allow-when-locked=true hotkey-overlay-title="Volume Up"   { spawn "wpctl" "set-volume" "-l" "2.0" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume  allow-when-locked=true hotkey-overlay-title="Volume Down" { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
     XF86AudioMute         allow-when-locked=true hotkey-overlay-title="Mute Audio"  { spawn "dms" "ipc" "call" "audio" "mute"; }
     XF86AudioMicMute      allow-when-locked=true hotkey-overlay-title="Mute Mic"    { spawn "dms" "ipc" "call" "audio" "micmute"; }
 
