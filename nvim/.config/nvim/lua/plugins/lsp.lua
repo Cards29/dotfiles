@@ -38,6 +38,23 @@ return {
 				-- C/C++
 				clangd = {},
 
+				-- Latex
+				texlab = {
+					settings = {
+						texlab = {
+							build = {
+								-- Set to empty or false if you want VimTeX to handle compiling
+								executable = "",
+							},
+							forwardSearch = {
+								-- Example configuration for Zathura
+								executable = "zathura",
+								args = { "--synctex-forward", "%l:1:%f", "%p" },
+							},
+						},
+					},
+				},
+
 				-- Rust
 				rust_analyzer = {
 					settings = {
