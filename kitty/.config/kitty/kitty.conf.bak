@@ -6,8 +6,8 @@ italic_font      auto
 bold_italic_font auto
 
 # Window Configuration
-window_padding_width 6
-background_opacity 0.75
+window_padding_width 12
+background_opacity 1.0
 background_blur 32
 hide_window_decorations yes
 
@@ -41,6 +41,6 @@ include dank-theme.conf
 
 
 # BEGIN_KITTY_THEME
-# Tokyo Night Moon
+# Tokyo Night
 include current-theme.conf
 # END_KITTY_THEME
