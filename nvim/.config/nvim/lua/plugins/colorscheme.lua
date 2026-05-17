@@ -31,6 +31,7 @@ return {
 	{ "webhooked/kanso.nvim", lazy = default_colorscheme ~= "kanso" },
 	{ "0x-ximon/acario.nvim", lazy = default_colorscheme ~= "acario" },
 	{ "ember-theme/nvim", lazy = default_colorscheme ~= "ember" },
+  {'oneslash/helix-nvim', version = "*", lazy = default_colorscheme ~= "helix"},
 
 	{
 		-- applies the default colorscheme after the chosen plugin's config runs
