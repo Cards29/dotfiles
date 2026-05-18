@@ -33,8 +33,21 @@ return {
 				prismals = {},
 
 				-- Python
-				pyright = {},
-
+				ruff = {},
+				pyright = {
+					settings = {
+						pyright = {
+							-- Using Ruff's import organizer instead
+							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								-- Let Ruff handle linting diagnostics
+								ignore = { "*" },
+							},
+						},
+					},
+				},
 				-- C/C++
 				clangd = {},
 
@@ -82,6 +95,7 @@ return {
 					"prettier",
 					"stylua",
 					"eslint_d",
+					"ruff",
 				},
 			})
 
