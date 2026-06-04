@@ -5,7 +5,7 @@ return {
 	opts = {
 		-- --- UI & Aesthetics ---
 		animate = { enabled = true }, -- Smooth animations for cursor movement and scrolling
-		indent = { enabled = true }, -- Modern indent guides with scope detection
+		indent = { enabled = false }, -- Modern indent guides with scope detection
 		notifier = { enabled = true, timeout = 3000 }, -- Pretty notification UI (replaces default)
 		notify = { enabled = true }, -- Wraps vim.notify to use the snacks notifier
 		scroll = { enabled = true }, -- Smooth scrolling animations
