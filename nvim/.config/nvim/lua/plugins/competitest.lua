@@ -6,21 +6,21 @@ return {
 	dependencies = "MunifTanjim/nui.nvim",
 	config = function()
 		require("competitest").setup({
-			received_problems_path = "$(CWD)/src/bin/a.rs",
-			received_contests_directory = "$(CWD)/src/bin/$(CONTEST)",
+			-- received_problems_path = "$(CWD)/src/bin/a.rs",
+			-- received_contests_directory = "$(CWD)/src/bin/$(CONTEST)",
+			--
+			-- compile_command = {
+			-- 	rust = { exec = "cargo", args = { "build", "--bin", "$(FNOEXT)" } },
+			-- },
+			--
+			-- run_command = {
+			-- 	rust = { exec = "cargo", args = { "run", "--quiet", "--bin", "$(FNOEXT)" } },
+			-- },
+			--
+			-- template_file = vim.fn.getcwd() .. "/template.rs",
 
-			compile_command = {
-				rust = { exec = "cargo", args = { "build", "--bin", "$(FNOEXT)" } },
-			},
-
-			run_command = {
-				rust = { exec = "cargo", args = { "run", "--quiet", "--bin", "$(FNOEXT)" } },
-			},
-
-			template_file = vim.fn.getcwd() .. "/template.rs",
-
-			evaluate_template_modifiers = true,
-			received_files_extension = "rs",
+			-- evaluate_template_modifiers = true,
+			-- received_files_extension = "rs",
 		})
 		local keymap = vim.keymap.set
 		local opts = { silent = true, noremap = true }

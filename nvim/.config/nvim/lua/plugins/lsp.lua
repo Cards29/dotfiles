@@ -143,7 +143,7 @@ return {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
 					-- enable inlay hints automatically
-					vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+					vim.lsp.inlay_hint.enable(false, { bufnr = ev.buf })
 
 					local map = function(mode, lhs, rhs, desc)
 						vim.keymap.set(mode, lhs, rhs, {

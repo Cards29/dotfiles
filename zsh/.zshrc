@@ -84,6 +84,8 @@ alias TDOWN="sudo tailscale down"
 alias lg="lazygit"
 alias f="fastfetch"
 alias docker=podman
+alias odysseus-up='cd ~/odysseus/ && docker compose up -d'
+alias odysseus-down='cd ~/odysseus/ && docker compose down'
 chpwd() {
     ls
 }
