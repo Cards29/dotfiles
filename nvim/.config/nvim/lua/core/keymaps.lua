@@ -68,8 +68,6 @@ keymap.set("n", "<Esc>", "<Esc>:nohl<CR>", { desc = "Clear search highlights" })
 
 keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
-keymap.set('i', '@' function() require('fzf-lua').complete_path() end, { silent = true })
-
 -- Jhingalala
 
 keymap.set("n", "<leader>cc", function()

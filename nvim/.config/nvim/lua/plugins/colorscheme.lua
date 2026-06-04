@@ -1,46 +1,18 @@
-local color_util = require("util.color")
-local default_colorscheme = color_util.get_saved()
-
 return {
-	{
-		"sainnhe/everforest",
-		lazy = default_colorscheme ~= "everforest",
-		config = function()
-			vim.g.everforest_background = "soft"
-			vim.g.everforest_enable_italic = 1
-			vim.g.everforest_disable_italic_comment = 0
-			vim.g.everforest_transparent_background = 0
-			vim.g.everforest_ui_contrast = "low"
-			vim.g.everforest_show_eob = 0
-			vim.g.everforest_float_style = "dim"
-			vim.g.everforest_diagnostic_text_highlight = 1
-			vim.g.everforest_diagnostic_line_highlight = 0
-			vim.g.everforest_diagnostic_virtual_text = "grey"
-			vim.g.everforest_current_word = "grey background"
-		end,
-	},
+	"folke/tokyonight.nvim",
+	lazy = false, -- Load this immediately so it doesn't flash when opening Neovim
+	priority = 1000, -- Make sure it loads before all other plugins
+	config = function()
+		require("tokyonight").setup({
+			style = "moon", -- Sets the flavor specifically to Moon
+			transparent = false, -- Set to true if you want your terminal background to show through
+			styles = {
+				sidebars = "dark", -- Left sidebars (like NvimTree/Neo-tree) stay clean and dark
+				floats = "dark", -- Floating windows get a dark, distinct background
+			},
+		})
 
-	{ "catppuccin/nvim", lazy = default_colorscheme ~= "catppuccin" },
-	{ "folke/tokyonight.nvim", lazy = default_colorscheme ~= "tokyonight" },
-	{ "rebelot/kanagawa.nvim", lazy = default_colorscheme ~= "kanagawa" },
-	{ "rose-pine/neovim", lazy = default_colorscheme ~= "rose-pine" },
-	{ "kaicataldo/material.vim", lazy = default_colorscheme ~= "material" },
-	{ "oskarnurm/koda.nvim", lazy = default_colorscheme ~= "koda" },
-	{ "mrpbennett/boo-berry.nvim", lazy = default_colorscheme ~= "boo-berry" },
-	{ "WTFox/jellybeans.nvim", lazy = default_colorscheme ~= "jellybeans" },
-	{ "webhooked/kanso.nvim", lazy = default_colorscheme ~= "kanso" },
-	{ "0x-ximon/acario.nvim", lazy = default_colorscheme ~= "acario" },
-	{ "ember-theme/nvim", lazy = default_colorscheme ~= "ember" },
-  {'oneslash/helix-nvim', version = "*", lazy = default_colorscheme ~= "helix"},
-
-	{
-		-- applies the default colorscheme after the chosen plugin's config runs
-		name = "default-colorscheme",
-		dir = vim.fn.stdpath("config"),
-		priority = 999,
-		lazy = false,
-		config = function()
-			vim.cmd.colorscheme(default_colorscheme)
-		end,
-	},
+		-- Actually load the colorscheme
+		vim.cmd([[colorscheme tokyonight]])
+	end,
 }
