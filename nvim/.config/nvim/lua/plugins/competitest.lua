@@ -17,9 +17,9 @@ return {
 			-- 	rust = { exec = "cargo", args = { "run", "--quiet", "--bin", "$(FNOEXT)" } },
 			-- },
 			--
-			-- template_file = vim.fn.getcwd() .. "/template.rs",
+			template_file = vim.fn.getcwd() .. "./template.cpp",
 
-			-- evaluate_template_modifiers = true,
+			evaluate_template_modifiers = true,
 			-- received_files_extension = "rs",
 		})
 		local keymap = vim.keymap.set
