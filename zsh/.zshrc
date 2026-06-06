@@ -69,7 +69,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview "$EZA_COMMAND --tree --level=2 \$rea
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "$EZA_COMMAND --tree --level=2 \$realpath"
 
 # Aliases
-alias ls="$EZA_COMMAND"
+alias ls="ls --color=always"
 alias v="nvim"
 alias h="helix"
 alias UPDATE="bash ~/dotfiles/scripts/update.sh"
@@ -86,6 +86,8 @@ alias f="fastfetch"
 alias docker=podman
 alias odysseus-up='cd ~/odysseus/ && docker compose up -d'
 alias odysseus-down='cd ~/odysseus/ && docker compose down'
+alias qylock-sddm="bash /home/cards29/qylock/sddm.sh"
+alias qylock-quickshell="bash /home/cards29/qylock/quickshell.sh"
 chpwd() {
     ls
 }
