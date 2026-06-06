@@ -9,9 +9,8 @@ return {
 		})
 	end,
 	keys = {
-		{ "<C-`>", "<cmd>EssentialTermToggle<cr>", mode = { "n", "t" } },
-		{ "<C-\\>", "<cmd>EssentialTermToggle<cr>", mode = { "n", "t" } },
-		{ "<C-t>", "<cmd>EssentialTermNew<cr>", mode = { "n", "t" } },
+		{ "<C-t>", "<cmd>EssentialTermToggle<cr>", mode = { "n", "t" } },
+		{ "<C-n>", "<cmd>EssentialTermNew<cr>", mode = { "n", "t" } },
 		{ "<C-x>", "<cmd>EssentialTermClose<cr>", mode = { "n", "t" } },
 		{ "<C-h>", "<cmd>EssentialTermPrev<cr>", mode = { "t" } },
 		{ "<C-l>", "<cmd>EssentialTermNext<cr>", mode = { "t" } },
