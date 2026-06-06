@@ -82,7 +82,7 @@ binds {
     // ========================================================================
 
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
-        spawn "dms" "ipc" "call" "lock" "lock";
+      spawn-sh "~/.local/share/quickshell-lockscreen/lock.sh"
     }
 
     Super+X hotkey-overlay-title="Power Menu" { 
