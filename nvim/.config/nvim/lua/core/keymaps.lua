@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
-keymap.set("n", ":", "q:i", { desc = "Command mode history buffer" })
 keymap.set("n", "j", "gj", { desc = "Visual down" })
 keymap.set("n", "k", "gk", { desc = "Visual up" })
 
