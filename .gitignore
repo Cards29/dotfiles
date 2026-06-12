@@ -10,3 +10,4 @@ AGENTS.md
 /nvim/.config/nvim/lua/plugins/dankcolors.lua
 /niri/.config/niri/dms/outputs.kdl
 /niri/.config/niri/dms/cursor.kdl
+/tmux/.config/tmux/plugins
