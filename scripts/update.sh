@@ -13,10 +13,10 @@ log_status() {
     echo -e "\n${GREEN}[=== $1 ===]${NC}\n"
 }
 
-# 1. Update system and AUR packages via yay
+# 1. Update system and AUR packages via paru
 log_status "Updating System & AUR Packages"
-if ! yay -Syu; then
-    FAILED_UPDATES+=("yay (System/AUR)")
+if ! paru -Syu; then
+    FAILED_UPDATES+=("paru (System/AUR)")
 fi
 
 # 2. Update Rust toolchains via rustup
