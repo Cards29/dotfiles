@@ -80,6 +80,10 @@ alias bentopdf="podman run -d --name bentopdf -p 3000:8080 --rm bentopdfteam/ben
 alias stop_bentopdf="podman stop bentopdf"
 alias TUP="sudo tailscale up"
 alias TDOWN="sudo tailscale down"
+# Jellyfin management shortcuts
+alias jelly_start="sudo systemctl start jellyfin.service"
+alias jelly_stop="sudo systemctl stop jellyfin.service"
+alias jelly_status="systemctl status jellyfin.service"
 # alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 alias lg="lazygit"
 alias f="fastfetch"
