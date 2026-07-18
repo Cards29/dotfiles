@@ -191,8 +191,6 @@ overview {
 // Add lines like this to spawn processes at startup.
 
 spawn-at-startup "dms" "ipc" "call" "welcome" "doctor"
-spawn-at-startup "dbus-update-activation-environment" "--systemd"
-spawn-at-startup "hypridle"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
