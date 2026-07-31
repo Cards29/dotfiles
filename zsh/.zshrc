@@ -87,9 +87,8 @@ alias jelly_status="systemctl status jellyfin.service"
 # alias arifin="uv run ~/Desktop/telegram-msg/main.py"
 alias lg="lazygit"
 alias f="fastfetch"
-alias docker=podman
-alias odysseus-up='cd ~/odysseus/ && docker compose up -d'
-alias odysseus-down='cd ~/odysseus/ && docker compose down'
+alias odysseus-up='cd ~/odysseus/ && podman compose up -d'
+alias odysseus-down='cd ~/odysseus/ && podman compose down'
 alias qylock-sddm="bash /home/cards29/qylock/sddm.sh"
 alias qylock-quickshell="bash /home/cards29/qylock/quickshell.sh"
 chpwd() {
