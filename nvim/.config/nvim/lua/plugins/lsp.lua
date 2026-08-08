@@ -20,7 +20,7 @@ return {
 				},
 			})
 
-			-- 2. Setup Mason LSP Config
+			-- 2. Define Servers
 			local servers = {
 				-- Web/JS/TS
 				ts_ls = {},
@@ -37,17 +37,16 @@ return {
 				pyright = {
 					settings = {
 						pyright = {
-							-- Using Ruff's import organizer instead
 							disableOrganizeImports = true,
 						},
 						python = {
 							analysis = {
-								-- Let Ruff handle linting diagnostics
 								ignore = { "*" },
 							},
 						},
 					},
 				},
+
 				-- C/C++
 				clangd = {},
 
@@ -56,11 +55,9 @@ return {
 					settings = {
 						texlab = {
 							build = {
-								-- Set to empty or false if you want VimTeX to handle compiling
 								executable = "",
 							},
 							forwardSearch = {
-								-- Example configuration for Zathura
 								executable = "zathura",
 								args = { "--synctex-forward", "%l:1:%f", "%p" },
 							},
@@ -72,7 +69,7 @@ return {
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
-							checkOnSave = {
+							check = {
 								command = "clippy",
 							},
 							procMacro = {
@@ -83,23 +80,7 @@ return {
 				},
 			}
 
-			-- 5. Setup mason-lspconfig (only for installation)
-			require("mason-lspconfig").setup({
-				ensure_installed = vim.tbl_keys(servers),
-				automatic_installation = true,
-			})
-
-			-- 3. Setup Mason Tool Installer (Linters/Formatters)
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"prettier",
-					"stylua",
-					"eslint_d",
-					"ruff",
-				},
-			})
-
-			-- 4. Modern Neovim 0.11+ Server Setup with Blink
+			-- 3. Modern Neovim 0.11+ Server Setup with Blink
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			for name, opts in pairs(servers) do
@@ -113,7 +94,23 @@ return {
 				vim.lsp.enable(name)
 			end
 
-			-- 5. Diagnostic Config
+			-- 4. Setup Mason LSP Config (handles installation only)
+			require("mason-lspconfig").setup({
+				ensure_installed = vim.tbl_keys(servers),
+				automatic_enable = false,
+			})
+
+			-- 5. Setup Mason Tool Installer (Linters/Formatters)
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"prettier",
+					"stylua",
+					"eslint_d",
+					"ruff",
+				},
+			})
+
+			-- 6. Diagnostic Config
 			vim.diagnostic.config({
 				virtual_text = {
 					prefix = "●",
@@ -138,11 +135,10 @@ return {
 				},
 			})
 
-			-- 6. LSP Attach Autocmd (Keymaps)
+			-- 7. LSP Attach Autocmd (Keymaps)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
-					-- enable inlay hints automatically
 					vim.lsp.inlay_hint.enable(false, { bufnr = ev.buf })
 
 					local map = function(mode, lhs, rhs, desc)
@@ -172,7 +168,7 @@ return {
 					map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
 					map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
 
-					-- Hover (with border)
+					-- Hover
 					map("n", "K", function()
 						vim.lsp.buf.hover({ border = "rounded" })
 					end, "Hover Docs")
