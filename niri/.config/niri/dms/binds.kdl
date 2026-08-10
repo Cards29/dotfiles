@@ -187,7 +187,7 @@ binds {
     Mod+Ctrl+R  hotkey-overlay-title="Reset Height"    { reset-window-height; }
     Mod+Ctrl+F  hotkey-overlay-title="Expand Width"    { expand-column-to-available-width; }
     Mod+C       hotkey-overlay-title="Center Column"   { center-column; }
-    Mod+Ctrl+C  hotkey-overlay-title="Center Visible"  { center-visible-columns; }
+    Mod+Shift+C  hotkey-overlay-title="Center Visible"  { center-visible-columns; }
 
     Mod+Minus       hotkey-overlay-title="Shrink Width"  { set-column-width "-10%"; }
     Mod+Equal       hotkey-overlay-title="Expand Width"  { set-column-width "+10%"; }
