@@ -112,6 +112,7 @@ alias -s ts='$EDITOR'
 export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
+# export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 
 # -------------------fzf------------------------------
@@ -215,4 +216,5 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
 
-
+# Learn Arabic
+sada
