@@ -77,6 +77,10 @@ binds {
         spawn "kitty" "--class" "wlctl" "-e" "wlctl"; 
     }
 
+    Mod+Ctrl+B hotkey-overlay-title="Bluetooth Settings" { 
+        spawn "kitty" "--class" "bluetui" "-e" "bluetui"; 
+    }
+
     // ========================================================================
     // SESSION & SECURITY
     // ========================================================================
