@@ -107,6 +107,12 @@ return {
 					"stylua",
 					"eslint_d",
 					"ruff",
+					"taplo",
+					"isort",
+					"black",
+					"tex-fmt",
+					"nixfmt",
+					"clang-format",
 				},
 			})
 
