@@ -16,6 +16,9 @@ path=(
   $HOME/.local/bin
   $HOME/.cargo/bin
   $HOME/go/bin
+  $HOME/Development/flutter/bin
+  /opt/android-sdk/cmdline-tools/latest/bin
+  /opt/android-sdk/platform-tools
   $path
 )
 
@@ -112,6 +115,8 @@ alias -s ts='$EDITOR'
 export EDITOR="nvim"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
+export CHROME_EXECUTABLE=/usr/bin/brave-origin
+export ANDROID_SDK_ROOT=/opt/android-sdk
 # export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 
@@ -215,3 +220,18 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
+
+# >>> android autocomplete >>>
+#compdef android
+
+_android_complete() {
+    local -a completions
+    local output
+    output=$(android --complete "${words[@]:1:$CURRENT-1}" 2>/dev/null)
+    if [[ -n "$output" ]]; then
+        completions=(${(z)output})
+        compadd -a completions
+    fi
+}
+compdef _android_complete android
+# <<< android autocomplete <<<

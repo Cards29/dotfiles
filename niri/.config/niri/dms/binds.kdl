@@ -49,6 +49,9 @@ binds {
     // TOOLS & UTILITIES
     // ========================================================================
 
+    // Mirror the currently focused display to a new window
+    Mod+Shift+M { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+
     Mod+M hotkey-overlay-title="Process Manager" {
         spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
     }
