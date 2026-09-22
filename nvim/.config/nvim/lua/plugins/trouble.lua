@@ -12,7 +12,7 @@ return {
 		{ "<leader>xd", "<cmd>Trouble diagnostics toggle<CR>", desc = "Workspace diagnostics" },
 
 		-- copied from the lsp file
-		{ "<leader>d", vim.diagnostic.open_float, desc = "Line diagnostics" },
+		{ "<leader>dl", vim.diagnostic.open_float, desc = "Line diagnostics" },
 		{
 			"[d",
 			function()

@@ -26,6 +26,7 @@ return {
 				tex = { "tex-fmt" },
 				nix = { "nixfmt" },
 				toml = { "taplo" },
+				dart = { "dart_format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
