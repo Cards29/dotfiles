@@ -6,6 +6,7 @@ opt.relativenumber = true
 opt.number = true
 opt.updatetime = 50
 opt.fcs = "eob: "
+opt.cmdheight = 0
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
