@@ -15,6 +15,7 @@ input {
     }
     keyboard {
         xkb {
+            layout "us"
             variant "colemak"
         }
     }

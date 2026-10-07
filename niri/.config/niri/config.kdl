@@ -62,7 +62,7 @@ input {
             // localectl set-x11-keymap.
 
 
-            options "caps:ctrl_modifier"
+            // options "caps:ctrl_modifier"
         }
 
         // Enable numlock on startup, omitting this setting disables it.
