@@ -349,4 +349,3 @@ include "dms/cursor.kdl"
 include "dms/windowrules.kdl"
 
 include "dms/outputs.kdl"
-include "dms/input.kdl"
