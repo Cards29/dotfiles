@@ -112,7 +112,8 @@ alias -s js='$EDITOR'
 alias -s ts='$EDITOR'
 
 # My Exports
-export EDITOR="nvim"
+export EDITOR="helix"
+export VISUAL="helix"
 export PGUSER='postgres'
 export PGDATABASE='postgres'
 export CHROME_EXECUTABLE=/usr/bin/brave-origin
