@@ -16,8 +16,7 @@ input {
     keyboard {
         xkb {
             layout "us"
-            variant "colemak"
+            options "lv3:ralt_alt"
         }
     }
 }
-

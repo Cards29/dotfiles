@@ -230,7 +230,7 @@ binds {
     Mod+I         hotkey-overlay-title="Prev Workspace" { focus-workspace-up; }
 
     // Workspace Management
-    Ctrl+Shift+R hotkey-overlay-title="Rename Workspace" { spawn "dms" "ipc" "call" "workspace-rename" "open"; }
+    // Ctrl+Shift+R hotkey-overlay-title="Rename Workspace" { spawn "dms" "ipc" "call" "workspace-rename" "open"; }
 
     Mod+Ctrl+Down hotkey-overlay-title="Move to Next WS" { move-column-to-workspace-down; }
     Mod+Ctrl+Up   hotkey-overlay-title="Move to Prev WS" { move-column-to-workspace-up; }
